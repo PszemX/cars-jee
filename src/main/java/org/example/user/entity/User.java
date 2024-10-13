@@ -21,4 +21,8 @@ public class User implements Serializable {
     private Boolean isPolish;
     @Singular
     private List<Car> cars;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private byte[] avatar;
 }

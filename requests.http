@@ -1,0 +1,120 @@
+# Get all users.
+
+GET http://localhost:9082/cars/api/users
+
+### ELON
+
+# Get single user (Elon).
+
+GET http://localhost:9082/cars/api/users/d7621c78-9057-4f24-912b-59a4e6c2c5a3
+
+###
+
+# Delete Elon.
+
+DELETE http://localhost:9082/cars/api/users/d7621c78-9057-4f24-912b-59a4e6c2c5a3
+
+###
+
+# Get deleted Elon.
+
+GET http://localhost:9082/cars/api/users/d7621c78-9057-4f24-912b-59a4e6c2c5a3
+
+###
+
+# Create Elon.
+
+PUT http://localhost:9082/cars/api/users/d7621c78-9057-4f24-912b-59a4e6c2c5a3
+Content-Type: application/json
+
+{
+  "name": "Elon",
+  "age": 59,
+  "isPolish": true
+}
+
+###
+
+# Get created Elon.
+
+GET http://localhost:9082/cars/api/users/d7621c78-9057-4f24-912b-59a4e6c2c5a3
+
+### BILL
+
+# Get Bill.
+
+GET http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9
+
+###
+
+# Update Bill.
+
+PUT http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9
+Content-Type: application/json
+
+{
+  "name": "Bill Gates",
+  "isPolish": false
+}
+
+###
+
+# Get changed Bill.
+
+GET http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9
+
+### AVATAR
+
+# Get Bill's avatar.
+
+GET http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9/avatar
+
+###
+
+# Delete Bills's avatar.
+
+DELETE http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9/avatar
+
+###
+
+# Get deleted Bill's avatar.
+
+GET http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9/avatar
+
+###
+
+# Create character portrait.
+
+PUT http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9/avatar
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="avatar"; filename="barack.jpg'
+
+< C:\Users\Przemek\Desktop\Studia\cars-jee\src\main\resources\avatar\barack.jpg
+--boundary--
+
+###
+
+# Update Bill to Barack.
+
+PUT http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9
+Content-Type: application/json
+
+{
+  "name": "Barack Obama",
+  "age": 63,
+  "isPolish": false
+}
+
+###
+
+# Get Barack.
+
+GET http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9
+
+###
+
+# Get single Baracks's avatar.
+
+GET http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9/avatar
