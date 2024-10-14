@@ -91,7 +91,7 @@ Content-Type: multipart/form-data; boundary=boundary
 --boundary
 Content-Disposition: form-data; name="avatar"; filename="barack.jpg'
 
-< C:\Users\Przemek\Desktop\Studia\cars-jee\src\main\resources\avatar\barack.jpg
+< /home/student/Desktop/cars-jee/src/main/resources/avatar/3b4f6d81-2a8e-488e-9458-516ff9b01345.jpg
 --boundary--
 
 ###

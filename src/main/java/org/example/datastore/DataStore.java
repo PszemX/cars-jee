@@ -25,6 +25,12 @@ public class DataStore {
     public DataStore(CloningUtility cloningUtility, Path avatarDirectory) {
         this.cloningUtility = cloningUtility;
         this.avatarDirectory = avatarDirectory;
+
+        try {
+            Files.createDirectories(this.avatarDirectory);
+        } catch (IOException e) {
+            throw new IllegalStateException("Unable to create avatar directory", e);
+        }
     }
 
     public synchronized List<User> findAllUsers(){
@@ -50,7 +56,7 @@ public class DataStore {
 
     public synchronized void deleteUser(UUID id) {
         if (!users.removeIf(user -> user.getId().equals(id))) {
-            throw new IllegalArgumentException("There is no user with \"%s\"".formatted(id));
+            throw new NotFoundException("There is no user with \"%s\"".formatted(id));
         }
         System.out.println("User {" + id + "} deleted!");
     }
@@ -72,7 +78,7 @@ public class DataStore {
             if (Files.exists(avatarPath)) {
                 Files.delete(avatarPath);
             } else {
-                throw new IllegalArgumentException("Avatar for user with id \"%s\" does not exist".formatted(uuid));
+                throw new NotFoundException("Avatar for user with id \"%s\" does not exist".formatted(uuid));
             }
         } catch (IOException e) {
             throw new RuntimeException("Could not delete avatar for user with id \"%s\"".formatted(uuid), e);

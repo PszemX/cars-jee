@@ -13,7 +13,8 @@ public class CreateResource implements ServletContextListener {
     @Override
     @SneakyThrows
     public void contextInitialized(ServletContextEvent event) {
-        Path avatarDirectory = Paths.get(getClass().getClassLoader().getResource("avatar").toURI());
+        // Path avatarDirectory = Paths.get(getClass().getClassLoader().getResource("avatar").toURI());
+        Path avatarDirectory = Paths.get(event.getServletContext().getInitParameter("avatarDirectory"));
         event.getServletContext().setAttribute("avatarDirectory", avatarDirectory);
     }
 }
