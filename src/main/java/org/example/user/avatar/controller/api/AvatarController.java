@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public interface AvatarController {
     byte[] getAvatar(UUID uuid);
-    void updateAvatar(UUID uuid, InputStream avatar);
     void deleteAvatar(UUID uuid);
+    void updateAvatar(UUID uuid, InputStream avatar);
     void createAvatar(UUID uuid,byte[] avatar);
 }

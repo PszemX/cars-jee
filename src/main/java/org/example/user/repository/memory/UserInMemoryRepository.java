@@ -1,5 +1,7 @@
 package org.example.user.repository.memory;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import org.example.datastore.DataStore;
 import org.example.user.entity.User;
 import org.example.user.repository.api.UserRepository;
@@ -7,12 +9,13 @@ import org.example.user.repository.api.UserRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
+@ApplicationScoped
 public class UserInMemoryRepository implements UserRepository {
     private final DataStore dataStore;
 
-    public UserInMemoryRepository(DataStore dataBase){
-        this.dataStore = dataBase;
+    @Inject
+    public UserInMemoryRepository(DataStore dataStore){
+        this.dataStore = dataStore;
     }
 
     @Override
@@ -31,12 +34,12 @@ public class UserInMemoryRepository implements UserRepository {
     }
 
     @Override
-    public void update(User entity) {
-        dataStore.updateUser(entity);
+    public void delete(User entity) {
+        dataStore.deleteUser(entity.getId());
     }
 
     @Override
-    public void delete(User entity) {
-        dataStore.deleteUser(entity.getId());
+    public void update(User entity) {
+        dataStore.updateUser(entity);
     }
 }

@@ -12,7 +12,6 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@ToString
 @EqualsAndHashCode
 public class Car implements Serializable {
     private UUID id;
@@ -20,4 +19,9 @@ public class Car implements Serializable {
     private LocalDate  registration;
     private User user;
     private Model model;
+
+    @Override
+    public String toString() {
+        return "Car " + id + "\n" + model.getName() + "\nOwner: " + user.getName() + "\nHP: " + horsePower + "\nRegistered: " + registration;
+    }
 }
