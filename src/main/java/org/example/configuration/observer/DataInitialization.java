@@ -35,6 +35,23 @@ public class DataInitialization implements ServletContextListener {
         init();
     }
 
+    private void printAll() {
+        System.out.println("\n\n*--- USERS ---*");
+        userService.findAllUsers().forEach(user -> {
+            System.out.println("\nUser: " + user.toString());
+        });
+
+        System.out.println("\n\n*--- MODELS ---*");
+        modelService.findAllModels().forEach(model -> {
+            System.out.println("\nModel: " + model.toString());
+        });
+
+        System.out.println("\n\n*--- CARS ---*");
+        carService.findAllCars().forEach(car -> {
+            System.out.println("\nCar: " + car.toString());
+        });
+    }
+
     private void init() {
         Model modelSuv = Model.builder()
                 .id(UUID.randomUUID())
@@ -131,20 +148,22 @@ public class DataInitialization implements ServletContextListener {
         carService.createCar(car3);
         carService.createCar(car4);
 
-        // Wyświetlanie użytkowników
-        System.out.println("==================USERS====================");
-        userService.findAllUsers().forEach(user -> {
-            System.out.println("User: " + user.getName());
-            if (user.getCars() != null && !user.getCars().isEmpty()) {
-                System.out.println("Cars:");
-                user.getCars().forEach(car -> {
-                    System.out.println("    - " + car.getModel().getName() + " (" + car.getHorsePower() + " HP)");
-                });
-            } else {
-                System.out.println("    No cars available for this user.");
-            }
-            System.out.println();
-        });
-        System.out.println();
+        this.printAll();
+
+        System.out.println("\n\nDELETING SUV\n\n");
+        modelService.deleteModel(modelSuv);
+
+        this.printAll();
+
+        System.out.println("\n\nUPDATE CAR\n\n");
+        car3.setHorsePower(999);
+        carService.updateCar(car3);
+
+        this.printAll();
+
+        System.out.println("\n\nDELETE CAR\n\n");
+        carService.deleteCar(car3);
+
+        this.printAll();
     }
 }

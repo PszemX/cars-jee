@@ -22,6 +22,6 @@ public class Car implements Serializable {
 
     @Override
     public String toString() {
-        return "Car " + id + "\n" + model.getName() + "\nOwner: " + user.getName() + "\nHP: " + horsePower + "\nRegistered: " + registration;
+        return "\n" + id + "\n" + model.getName() + "\nOwner: " + user.getName() + "\nHP: " + horsePower + "\nRegistered: " + registration + "\n";
     }
 }

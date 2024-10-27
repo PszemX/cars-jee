@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 import org.example.car.entity.Car;
 import org.example.car.entity.Model;
+import org.example.car.service.CarService;
+import org.example.user.service.UserService;
 import org.example.utils.CloningUtility;
 import org.example.controller.servlet.exception.NotFoundException;
 import org.example.user.entity.User;
@@ -29,12 +31,16 @@ public class DataStore {
 
     private final CloningUtility cloningUtility;
     private final Path avatarDirectory;
+    private final CarService carService;
+    private final UserService userService;
 
     @SneakyThrows
     @Inject
-    public DataStore(CloningUtility cloningUtility) {
+    public DataStore(CloningUtility cloningUtility, CarService carService, UserService userService) {
         this.cloningUtility = cloningUtility;
         this.avatarDirectory = Paths.get(getClass().getClassLoader().getResource("avatar").toURI());
+        this.carService = carService;
+        this.userService = userService;
     }
 
     public synchronized List<User> findAllUsers() {
@@ -75,7 +81,11 @@ public class DataStore {
     }
 
     public synchronized void deleteUser(UUID id) {
-        if (!users.removeIf(user -> user.getId().equals(id))) {
+        if (users.removeIf(user -> user.getId().equals(id))) {
+            for (Car car : carService.findAllCars()){
+                if (car.getUser().getId().equals(id)) carService.deleteCar(car);
+            }
+        } else {
             throw new NotFoundException("There is no user with \"%s\"".formatted(id));
         }
     }
@@ -174,8 +184,12 @@ public class DataStore {
     }
 
     public synchronized void deleteModel(Model entity) {
-        if (!models.removeIf(model -> model.getId().equals(entity.getId()))) {
-            throw new NotFoundException("There is no user with \"%s\"".formatted(entity.getId()));
+        if (models.removeIf(model -> model.getId().equals(entity.getId()))) {
+            for (Car car : carService.findAllCars()) {
+                if (car.getModel().getId().equals(entity.getId())) carService.deleteCar(car);
+            }
+        } else {
+            throw new NotFoundException("There is no model with \"%s\"".formatted(entity.getId()));
         }
     }
 
@@ -183,7 +197,7 @@ public class DataStore {
         if (models.removeIf(car -> car.getId().equals(entity.getId()))) {
             models.add(cloningUtility.clone(entity));
         } else {
-            throw new IllegalArgumentException("There is no user with \"%s\"".formatted(entity.getId()));
+            throw new IllegalArgumentException("There is no model with \"%s\"".formatted(entity.getId()));
         }
     }
 
