@@ -1,8 +1,7 @@
 package org.example.user.dto;
 
 import lombok.*;
-import org.example.car.entity.Model;
-import org.example.user.entity.User;
+import org.example.car.entity.CarFormat;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -32,8 +31,7 @@ public class GetUserResponse {
         private UUID id;
         private Integer horsePower;
         private LocalDate registration;
-        private User user;
-        private Model model;
+        private CarFormat carFormat;
     }
     @Singular
     private List<Car> cars;

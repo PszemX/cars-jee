@@ -1,1 +1,1 @@
-`mvn -P liberty liberty:dev`
+mvn -P liberty liberty:dev

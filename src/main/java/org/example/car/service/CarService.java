@@ -6,6 +6,7 @@ import jakarta.inject.Inject;
 import lombok.NoArgsConstructor;
 import org.example.car.entity.Car;
 import org.example.car.repository.CarRepository;
+import org.example.car.repository.CarRepositoryImpl;
 
 import java.util.List;
 import java.util.Optional;

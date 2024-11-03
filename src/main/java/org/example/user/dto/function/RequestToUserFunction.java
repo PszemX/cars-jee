@@ -1,5 +1,6 @@
 package org.example.user.dto.function;
 
+import org.example.user.dto.GetUserResponse;
 import org.example.user.dto.PutUserRequest;
 import org.example.user.entity.User;
 

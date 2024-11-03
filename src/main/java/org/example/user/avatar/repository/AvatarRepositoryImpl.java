@@ -1,31 +1,32 @@
 package org.example.user.avatar.repository;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import org.example.datastore.DataStore;
+import org.example.database.DataBase;
 
 
 import java.util.UUID;
 
 @ApplicationScoped
-public class AvatarRepositoryImpl implements AvatarRepository{
-    private final DataStore dataStore;
+public class AvatarRepositoryImpl implements AvatarRepository {
+    private final DataBase dataBase;
 
     @Inject
-    public AvatarRepositoryImpl(DataStore dataStore){
-        this.dataStore = dataStore;
+    public AvatarRepositoryImpl(DataBase dataBase){
+        this.dataBase = dataBase;
     }
     public void deleteAvatar(UUID uuid){
-        this.dataStore.deleteAvatar(uuid);
+        this.dataBase.deleteAvatar(uuid);
     }
     public void updateAvatar(UUID uuid,byte[] avatar){
-        this.dataStore.updateAvatar(uuid,avatar);
+        this.dataBase.updateAvatar(uuid,avatar);
     }
     public void createAvatar(UUID uuid, byte[] avatar){
-        this.dataStore.createAvatar(uuid,avatar);
+        this.dataBase.createAvatar(uuid,avatar);
     }
     public byte[] getAvatar(UUID uuid){
-        return this.dataStore.getAvatar(uuid);
+        return this.dataBase.getAvatar(uuid);
     }
 
 }

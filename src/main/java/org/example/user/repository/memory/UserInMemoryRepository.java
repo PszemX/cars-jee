@@ -1,8 +1,10 @@
 package org.example.user.repository.memory;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import org.example.datastore.DataStore;
+import lombok.NoArgsConstructor;
+import org.example.database.DataBase;
 import org.example.user.entity.User;
 import org.example.user.repository.api.UserRepository;
 
@@ -11,35 +13,35 @@ import java.util.Optional;
 import java.util.UUID;
 @ApplicationScoped
 public class UserInMemoryRepository implements UserRepository {
-    private final DataStore dataStore;
+    private final DataBase dataBase;
 
     @Inject
-    public UserInMemoryRepository(DataStore dataStore){
-        this.dataStore = dataStore;
+    public UserInMemoryRepository(DataBase dataBase){
+        this.dataBase = dataBase;
     }
 
     @Override
     public Optional<User> find(UUID id) {
-        return Optional.ofNullable(dataStore.findUserById(id));
+        return Optional.ofNullable(dataBase.findUserById(id));
     }
 
     @Override
     public List<User> findAll() {
-        return dataStore.findAllUsers();
+        return dataBase.findAllUsers();
     }
 
     @Override
     public void create(User entity) {
-        dataStore.createUser(entity);
+        dataBase.createUser(entity);
     }
 
     @Override
     public void delete(User entity) {
-        dataStore.deleteUser(entity.getId());
+        dataBase.deleteUser(entity.getId());
     }
 
     @Override
     public void update(User entity) {
-        dataStore.updateUser(entity);
+        dataBase.updateUser(entity);
     }
 }

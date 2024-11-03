@@ -18,10 +18,10 @@ public class Car implements Serializable {
     private Integer horsePower;
     private LocalDate  registration;
     private User user;
-    private Model model;
+    private Brand brand;
 
     @Override
     public String toString() {
-        return "\n" + id + "\n" + model.getName() + "\nOwner: " + user.getName() + "\nHP: " + horsePower + "\nRegistered: " + registration + "\n";
+        return "\n" + id + "\n" + brand.getName() + "\nOwner: " + user.getName() + "\nHP: " + horsePower + "\nRegistered: " + registration + "\n";
     }
 }

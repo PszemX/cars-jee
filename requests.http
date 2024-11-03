@@ -1,120 +1,88 @@
 # Get all users.
 
-GET http://localhost:9082/cars/api/users
-
-### ELON
-
-# Get single user (Elon).
-
-GET http://localhost:9082/cars/api/users/d7621c78-9057-4f24-912b-59a4e6c2c5a3
+GET http://localhost:9082/carDealership/api/users
 
 ###
 
-# Delete Elon.
+# Get single user.
 
-DELETE http://localhost:9082/cars/api/users/d7621c78-9057-4f24-912b-59a4e6c2c5a3
-
-###
-
-# Get deleted Elon.
-
-GET http://localhost:9082/cars/api/users/d7621c78-9057-4f24-912b-59a4e6c2c5a3
+GET http://localhost:9082/carDealership/api/users/525d3e7b-bb1f-4c13-bf17-926d1a12e4c0
 
 ###
 
-# Create Elon.
+# delete user.
 
-PUT http://localhost:9082/cars/api/users/d7621c78-9057-4f24-912b-59a4e6c2c5a3
+DELETE http://localhost:9082/carDealership/api/users/525d3e7b-bb1f-4c13-bf17-926d1a12e4c0
+
+###
+
+# User disappeared
+
+GET http://localhost:9082/carDealership/api/users/525d3e7b-bb1f-4c13-bf17-926d1a12e4c0
+
+###
+
+# create or update user
+
+PUT http://localhost:9082/carDealership/api/users/525d3e7b-bb1f-4c13-bf17-926d1a12e4c0
 Content-Type: application/json
 
 {
-  "name": "Elon",
-  "age": 59,
-  "isPolish": true
+  "username": "darek",
+  "email": "dareczek@wp.pl"
 }
 
 ###
 
-# Get created Elon.
+# User is changed
 
-GET http://localhost:9082/cars/api/users/d7621c78-9057-4f24-912b-59a4e6c2c5a3
-
-### BILL
-
-# Get Bill.
-
-GET http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9
+GET http://localhost:9082/carDealership/api/users/525d3e7b-bb1f-4c13-bf17-926d1a12e4c0
 
 ###
 
-# Update Bill.
+# create or update user
 
-PUT http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9
+PUT http://localhost:9082/carDealership/api/users/525d3e7b-bb1f-4c13-bf17-926d1a12e4c0
 Content-Type: application/json
 
 {
-  "name": "Bill Gates",
-  "isPolish": false
+  "username": "mirek",
+  "email": "mireczek@wp.pl"
 }
 
 ###
 
-# Get changed Bill.
+# User is changed
 
-GET http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9
+GET http://localhost:9082/carDealership/api/users/525d3e7b-bb1f-4c13-bf17-926d1a12e4c0
 
 ### AVATAR
 
-# Get Bill's avatar.
+# Get single user avatar.
 
-GET http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9/avatar
-
-###
-
-# Delete Bills's avatar.
-
-DELETE http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9/avatar
+GET http://localhost:9082/carDealership/api/users/525d3e7b-bb1f-4c13-bf17-926d1a12e4c0/avatar
 
 ###
 
-# Get deleted Bill's avatar.
+# delete avatarr.
 
-GET http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9/avatar
+DELETE http://localhost:9082/carDealership/api/users/525d3e7b-bb1f-4c13-bf17-926d1a12e4c0/avatar
 
 ###
 
 # Create character portrait.
 
-PUT http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9/avatar
+PUT http://localhost:9082/carDealership/api/users/525d3e7b-bb1f-4c13-bf17-926d1a12e4c0/avatar
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary
-Content-Disposition: form-data; name="avatar"; filename="barack.jpg'
+Content-Disposition: form-data; name="avatar"; filename="changedAvatar.png'
 
-< /home/student/Desktop/cars-jee/src/main/resources/avatar/3b4f6d81-2a8e-488e-9458-516ff9b01345.jpg
+< C:\Users\przemo\MyProjects\carDealershipApp\src\main\resources\avatar\changedAvatar.png
 --boundary--
 
 ###
 
-# Update Bill to Barack.
+# Get single user avatar.
 
-PUT http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9
-Content-Type: application/json
-
-{
-  "name": "Barack Obama",
-  "age": 63,
-  "isPolish": false
-}
-
-###
-
-# Get Barack.
-
-GET http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9
-
-###
-
-# Get single Baracks's avatar.
-
-GET http://localhost:9082/cars/api/users/e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9/avatar
+GET http://localhost:9082/carDealership/api/users/525d3e7b-bb1f-4c13-bf17-926d1a12e4c0/avatar
