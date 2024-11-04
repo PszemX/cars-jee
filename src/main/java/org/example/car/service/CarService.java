@@ -40,4 +40,7 @@ public class CarService {
     public void updateCar(Car car) {
         carRepository.update(car);
     }
+    public List<Car> findAllByBrand(UUID uuid){
+        return carRepository.findAllByBrand(uuid);
+    }
 }

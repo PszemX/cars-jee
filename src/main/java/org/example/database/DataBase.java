@@ -2,10 +2,9 @@ package org.example.database;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.NotFoundException;
 import lombok.NoArgsConstructor;
 import org.example.Util.CloningUtility;
-import org.example.car.service.BrandService;
-import org.example.controller.servlet.exception.NotFoundException;
 import org.example.car.entity.Brand;
 import org.example.car.entity.Car;
 import org.example.user.entity.User;
@@ -27,13 +26,11 @@ public class DataBase {
 
     private final CloningUtility cloningUtility;
     private final Path avatarDirectory;
-    private final BrandService brandService;
 
     @Inject
-    public DataBase(CloningUtility cloningUtility, BrandService brandService) throws URISyntaxException {
+    public DataBase(CloningUtility cloningUtility) throws URISyntaxException {
         this.cloningUtility = cloningUtility;
         this.avatarDirectory = Paths.get(getClass().getClassLoader().getResource("avatar").toURI());
-        this.brandService = brandService;
     }
 
     public synchronized List<User> findAllUsers() {
@@ -70,6 +67,7 @@ public class DataBase {
         if (users.stream().anyMatch(user -> user.getId().equals(entity.getId()))){
             throw new IllegalArgumentException("This id is used!");
         }
+        users.add(cloningUtility.clone(entity));
     }
 
     public synchronized void deleteUser(UUID id) {
@@ -135,8 +133,6 @@ public class DataBase {
         }
     }
 
-
-
     public synchronized List<Brand> findAllBrands() {
         return brands.stream()
                 .map(brand -> {
@@ -184,7 +180,7 @@ public class DataBase {
         if (brands.removeIf(car -> car.getId().equals(entity.getId()))) {
             brands.add(cloningUtility.clone(entity));
         } else {
-            throw new IllegalArgumentException("There is no user with \"%s\"".formatted(entity.getId()));
+            this.createBrand(entity);
         }
     }
 
@@ -216,36 +212,26 @@ public class DataBase {
             user.getCars().removeIf(car -> car.getId().equals(entity.getId()));
         }
         for (Brand brand : brands) {
-            for (Car car : brand.getCars()) {
-                if (car.getId().equals(entity.getId())) {
-                    brand.getCars().remove(car);
-                }
-            }
+            brand.getCars().removeIf(car -> car.getId().equals(entity.getId()));
         }
-        if (!cars.removeIf(car -> car.getId().equals(entity.getId()))) {
-            throw new IllegalArgumentException("There is no user with \"%s\"".formatted(entity.getId()));
-        }
+        cars.removeIf(car -> car.getId().equals(entity.getId()));
     }
 
     public synchronized void updateCar(Car value) {
         Car entity = cloneWithRelationships(value);
-        if (cars.removeIf(car -> car.getId().equals(value.getId()))) {
-            cars.add(entity);
-        } else {
-            throw new IllegalArgumentException("There is no user with \"%s\"".formatted(entity.getId()));
-        }
+        this.deleteCar(Car.builder().id(value.getId()).build());
+        cars.add(entity);
     }
     private Car cloneWithRelationships(Car value) {
         Car entity = cloningUtility.clone(value);
 
-        if (entity.getUser() != null) {
+        if (entity.getUser() != null && entity.getUser().getId() != null) {
             entity.setUser(users.stream()
                     .filter(user -> user.getId().equals(value.getUser().getId()))
                     .findFirst()
                     .orElseThrow(() -> new IllegalArgumentException("No user with id \"%s\".".formatted(value.getUser().getId()))));
         }
-
-        if (entity.getBrand() != null) {
+        if (entity.getBrand() != null && entity.getUser().getId() != null) {
             entity.setBrand(brands.stream()
                     .filter(profession -> profession.getId().equals(value.getBrand().getId()))
                     .findFirst()
@@ -254,4 +240,12 @@ public class DataBase {
 
         return entity;
     }
+
+    public synchronized List<Car> findAllByBrand(UUID brandId) {
+        return cars.stream()
+                .filter(car -> car.getBrand().getId().equals(brandId))
+                .map(cloningUtility::clone)
+                .collect(Collectors.toList());
+    }
+
 }

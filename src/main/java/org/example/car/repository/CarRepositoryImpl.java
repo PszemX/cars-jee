@@ -43,4 +43,9 @@ public class CarRepositoryImpl implements CarRepository {
     public void update(Car entity) {
         dataBase.updateCar(entity);
     }
+
+    @Override
+    public List<Car> findAllByBrand(UUID uuid) {
+        return dataBase.findAllByBrand(uuid);
+    }
 }

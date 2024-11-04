@@ -37,7 +37,7 @@ public class DataInitialization implements ServletContextListener {
 
     private void init() {
         Brand modelSuv = Brand.builder()
-                .id(UUID.randomUUID())
+                .id(UUID.fromString("cd42d39a-e527-4f30-86f7-4f8b75ab285c"))
                 .name("BMW X5")
                 .manual(false)
                 .body(CarFormat.Suv)
@@ -99,6 +99,7 @@ public class DataInitialization implements ServletContextListener {
                 .horsePower(200)
                 .registration(LocalDate.now())
                 .brand(modelSuv)
+                .user(user1)
                 .build();
 
         Car car2 = Car.builder()
@@ -106,6 +107,7 @@ public class DataInitialization implements ServletContextListener {
                 .horsePower(150)
                 .registration(LocalDate.now())
                 .brand(modelCabriolet)
+                .user(user2)
                 .build();
 
         Car car3 = Car.builder()
@@ -113,6 +115,7 @@ public class DataInitialization implements ServletContextListener {
                 .horsePower(180)
                 .registration(LocalDate.now())
                 .brand(modelSedan)
+                .user(user3)
                 .build();
 
         Car car4 = Car.builder()
@@ -120,6 +123,7 @@ public class DataInitialization implements ServletContextListener {
                 .horsePower(220)
                 .registration(LocalDate.now())
                 .brand(modelSuv)
+                .user(user4)
                 .build();
 
         carService.createCar(car1);
