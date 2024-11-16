@@ -6,19 +6,19 @@ GET http://localhost:9082/cars/api/brands
 
 # Get single brand.
 
-GET http://localhost:9082/cars/api/brands/a963294f-ee53-472c-8bdc-f6364dc59e76
+GET http://localhost:9082/cars/api/brands/cd42d39a-e527-4f30-86f7-4f8b75ab285c
 
 ###
 
 # delete brand.
 
-DELETE http://localhost:9082/cars/api/brands/a963294f-ee53-472c-8bdc-f6364dc59e76
+DELETE http://localhost:9082/cars/api/brands/cd42d39a-e527-4f30-86f7-4f8b75ab285c
 
 ###
 
 # create or update brand
 
-PUT http://localhost:9082/cars/api/brands/a963294f-ee53-472c-8bdc-f6364dc59e76
+PUT http://localhost:9082/cars/api/brands/cd42d39a-e527-4f30-86f7-4f8b75ab285c
 Content-Type: application/json
 
 {
@@ -38,7 +38,7 @@ GET http://localhost:9082/cars/api/cars
 
 # Get all cars of a given brand
 
-GET http://localhost:9082/cars/api/brands/a963294f-ee53-472c-8bdc-f6364dc59e76/cars
+GET http://localhost:9082/cars/api/brands/cd42d39a-e527-4f30-86f7-4f8b75ab285c/cars
 
 ###
 
@@ -55,11 +55,12 @@ DELETE http://localhost:9082/cars/api/cars/4ddea84c-8c39-4c0a-9426-e5a5fb3ca35b
 
 ###
 
-PUT http://localhost:9082/cars/api/brands/a963294f-ee53-472c-8bdc-f6364dc59e76/cars/580a1cb0-2e6a-4b43-86a3-1033c9bde55b
+PUT http://localhost:9082/cars/api/brands/cd42d39a-e527-4f30-86f7-4f8b75ab285c/cars/580a1cb0-2e6a-4b43-86a3-1033c9bde55b
 Content-Type: application/json
 
 {
-  "horsePower": 999
+  "horsePower": 999,
+  "user": "e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9"
 }
 
 

@@ -221,6 +221,15 @@ public class DataBase {
         Car entity = cloneWithRelationships(value);
         this.deleteCar(Car.builder().id(value.getId()).build());
         cars.add(entity);
+        for (Brand brand: brands) {
+            if (brand.getId().equals(entity.getBrand().getId())) {
+                if(brand.getCars().isEmpty()) {
+                    brand.setCars(new ArrayList<>());
+                    brand.getCars().add(entity);
+                }
+                //brand.getCars().add(entity);
+            };
+        }
     }
     private Car cloneWithRelationships(Car value) {
         Car entity = cloningUtility.clone(value);

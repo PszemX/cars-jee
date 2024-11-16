@@ -3,6 +3,7 @@
     import lombok.*;
 
     import java.io.Serializable;
+    import java.util.ArrayList;
     import java.util.List;
     import java.util.UUID;
 
@@ -19,5 +20,5 @@
         private Boolean manual;
         private CarFormat body;
         @Singular
-        private List<Car> cars;
+        private List<Car> cars = new ArrayList<>();
     }

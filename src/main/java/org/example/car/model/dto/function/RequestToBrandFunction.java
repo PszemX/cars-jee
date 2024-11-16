@@ -5,6 +5,7 @@ import org.example.car.model.dto.PutBrandRequest;
 import org.example.user.dto.PutUserRequest;
 import org.example.user.entity.User;
 
+import java.util.ArrayList;
 import java.util.function.Function;
 
 public class RequestToBrandFunction implements Function<PutBrandRequest, Brand>{
@@ -15,6 +16,7 @@ public class RequestToBrandFunction implements Function<PutBrandRequest, Brand>{
                 .name(putBrandRequest.getName())
                 .manual(putBrandRequest.getManual())
                 .body(putBrandRequest.getBody())
+                .cars(new ArrayList<>())
                 .build();
     }
 }

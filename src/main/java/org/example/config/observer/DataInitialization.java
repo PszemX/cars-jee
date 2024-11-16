@@ -16,6 +16,7 @@ import org.example.user.entity.User;
 import org.example.user.service.UserService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.UUID;
 
 @ApplicationScoped
@@ -41,6 +42,7 @@ public class DataInitialization implements ServletContextListener {
                 .name("BMW X5")
                 .manual(false)
                 .body(CarFormat.Suv)
+                .cars(new ArrayList<>())
                 .build();
 
         Brand modelCabriolet = Brand.builder()

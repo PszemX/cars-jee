@@ -12,14 +12,14 @@ public class RequestToCarFunction implements Function<PutCarRequest, Car> {
     @Override
     public Car apply(PutCarRequest putCarRequest) {
         return Car.builder()
-                .id(putCarRequest.getId())
                 .horsePower(putCarRequest.getHorsePower())
                 .registration(putCarRequest.getRegistration())
                 .user(User.builder()
                         .id(putCarRequest.getUser())
                         .build())
                 .brand(Brand.builder()
-                        .id(putCarRequest.getId()).build())
+                        .id(putCarRequest.getBrand()).build())
+                .id(putCarRequest.getId())
                 .build();
     }
 }
