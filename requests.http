@@ -6,25 +6,38 @@ GET http://localhost:9082/cars/api/brands
 
 # Get single brand.
 
-GET http://localhost:9082/cars/api/brands/cd42d39a-e527-4f30-86f7-4f8b75ab285c
+GET http://localhost:9082/cars/api/brands/79fac802-30a6-4ffb-b4e1-33d8453408c8
 
 ###
 
 # delete brand.
 
-DELETE http://localhost:9082/cars/api/brands/cd42d39a-e527-4f30-86f7-4f8b75ab285c
+DELETE http://localhost:9082/cars/api/brands/79fac802-30a6-4ffb-b4e1-33d8453408c8
 
 ###
 
-# create or update brand
+# create a brand
 
-PUT http://localhost:9082/cars/api/brands/cd42d39a-e527-4f30-86f7-4f8b75ab285c
+PUT http://localhost:9082/cars/api/brands/79fac802-30a6-4ffb-b4e1-33d8453408c8
 Content-Type: application/json
 
 {
   "name": "BMW XL123",
   "manual": true,
   "body": "Suv"
+}
+
+###
+
+# update a brand
+
+PATCH http://localhost:9082/cars/api/brands/79fac802-30a6-4ffb-b4e1-33d8453408c8
+Content-Type: application/json
+
+{
+  "name": "BMW XL1234567890",
+  "manual": false,
+  "body": "Sedan"
 }
 
 ###
@@ -38,24 +51,24 @@ GET http://localhost:9082/cars/api/cars
 
 # Get all cars of a given brand
 
-GET http://localhost:9082/cars/api/brands/cd42d39a-e527-4f30-86f7-4f8b75ab285c/cars
+GET http://localhost:9082/cars/api/brands/eb3cc89e-083e-4702-b5c8-72f01bb0814d/cars
 
 ###
 
 # Get a car
 
-GET http://localhost:9082/cars/api/cars/4ddea84c-8c39-4c0a-9426-e5a5fb3ca35b
+GET http://localhost:9082/cars/api/cars/7b66a112-e69d-401d-bea4-d1bb9796e987
 
 ###
 
 # Remove a car
 
-DELETE http://localhost:9082/cars/api/cars/4ddea84c-8c39-4c0a-9426-e5a5fb3ca35b
+DELETE http://localhost:9082/cars/api/cars/7b66a112-e69d-401d-bea4-d1bb9796e987
 
 
 ###
 
-PUT http://localhost:9082/cars/api/brands/cd42d39a-e527-4f30-86f7-4f8b75ab285c/cars/580a1cb0-2e6a-4b43-86a3-1033c9bde55b
+PUT http://localhost:9082/cars/api/brands/cd42d39a-e527-4f30-86f7-4f8b75ab285c/cars/7b66a112-e69d-401d-bea4-d1bb9796e987
 Content-Type: application/json
 
 {

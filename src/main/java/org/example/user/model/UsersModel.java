@@ -15,6 +15,9 @@ import java.util.UUID;
 @ToString
 @EqualsAndHashCode
 public class UsersModel implements Serializable {
+    @Singular
+    private List<User> users;
+
     @Getter
     @Setter
     @Builder
@@ -28,6 +31,4 @@ public class UsersModel implements Serializable {
         private Integer age;
         private Boolean isPolish;
     }
-    @Singular
-    private List<User> users;
 }

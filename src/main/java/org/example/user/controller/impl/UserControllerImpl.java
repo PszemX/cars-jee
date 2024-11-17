@@ -44,13 +44,13 @@ public class UserControllerImpl implements UserController {
                         }
                 );
     }
+
     public void updateOrCreateUser(PutUserRequest putUserRequest) {
         User user = factory.requestToUser().apply(putUserRequest);
 
-        if (userService.find(user.getId()).isPresent()){
+        if (userService.find(user.getId()).isPresent()) {
             userService.updateUser(user);
-        }
-        else {
+        } else {
             userService.createUser(user);
         }
     }

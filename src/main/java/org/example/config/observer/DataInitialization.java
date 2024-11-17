@@ -38,7 +38,7 @@ public class DataInitialization implements ServletContextListener {
 
     private void init() {
         Brand modelSuv = Brand.builder()
-                .id(UUID.fromString("cd42d39a-e527-4f30-86f7-4f8b75ab285c"))
+                .id(UUID.randomUUID())
                 .name("BMW X5")
                 .manual(false)
                 .body(CarFormat.Suv)
@@ -64,28 +64,28 @@ public class DataInitialization implements ServletContextListener {
         brandService.createBrand(modelSedan);
 
         User user1 = User.builder()
-                .id(UUID.fromString("e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9"))
+                .id(UUID.randomUUID())
                 .name("Bill")
                 .age(30)
                 .isPolish(true)
                 .build();
 
         User user2 = User.builder()
-                .id(UUID.fromString("d7621c78-9057-4f24-912b-59a4e6c2c5a3"))
+                .id(UUID.randomUUID())
                 .name("Elon")
                 .age(25)
                 .isPolish(false)
                 .build();
 
         User user3 = User.builder()
-                .id(UUID.fromString("3b4f6d81-2a8e-488e-9458-516ff9b01345"))
+                .id(UUID.randomUUID())
                 .name("Steve")
                 .age(40)
                 .isPolish(true)
                 .build();
 
         User user4 = User.builder()
-                .id(UUID.fromString("fa7e64a5-d1b9-47ad-9d19-7cfe8e3f5d9e"))
+                .id(UUID.randomUUID())
                 .name("Jimmy")
                 .age(35)
                 .isPolish(true)

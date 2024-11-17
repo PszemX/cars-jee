@@ -1,5 +1,6 @@
     package org.example.car.entity;
 
+    import jakarta.persistence.*;
     import lombok.*;
 
     import java.io.Serializable;
@@ -14,11 +15,16 @@
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
     @ToString
     @EqualsAndHashCode
+    @Entity
+    @Table(name = "brands")
     public class Brand implements Serializable {
+        @Id
         private UUID id;
         private String name;
         private Boolean manual;
         private CarFormat body;
-        @Singular
+        @ToString.Exclude
+        @EqualsAndHashCode.Exclude
+        @OneToMany(mappedBy = "brand", cascade = CascadeType.REMOVE)
         private List<Car> cars = new ArrayList<>();
     }

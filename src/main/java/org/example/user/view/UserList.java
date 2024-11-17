@@ -1,6 +1,6 @@
 package org.example.user.view;
 
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.example.factories.ModelFunctionFactory;
@@ -8,12 +8,12 @@ import org.example.user.entity.User;
 import org.example.user.model.UsersModel;
 import org.example.user.service.UserService;
 
-@RequestScoped
+@ApplicationScoped
 @Named
 public class UserList {
     private final UserService service;
-    private UsersModel users;
     private final ModelFunctionFactory factory;
+    private UsersModel users;
 
 
     @Inject

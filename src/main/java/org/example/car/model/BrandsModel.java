@@ -15,6 +15,9 @@ import java.util.UUID;
 @ToString
 @EqualsAndHashCode
 public class BrandsModel implements Serializable {
+    @Singular
+    private List<Brand> brands;
+
     @Getter
     @Setter
     @Builder
@@ -28,6 +31,5 @@ public class BrandsModel implements Serializable {
         private Boolean manual;
         private CarFormat body;
     }
-    @Singular
-    private List<Brand> brands;
+
 }

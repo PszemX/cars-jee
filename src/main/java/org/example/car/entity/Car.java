@@ -1,10 +1,11 @@
 package org.example.car.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 import org.example.user.entity.User;
 
-import java.time.LocalDate;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Getter
@@ -13,11 +14,19 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @EqualsAndHashCode
+@Entity
+@Table(name = "cars")
+@ToString
 public class Car implements Serializable {
+    @Id
     private UUID id;
     private Integer horsePower;
-    private LocalDate  registration;
+    private LocalDate registration;
+    @ManyToOne
+    @JoinColumn(name = "user_username")
     private User user;
+    @ManyToOne
+    @JoinColumn(name = "brand")
     private Brand brand;
 
     @Override

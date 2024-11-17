@@ -21,6 +21,8 @@ public class BrandModel {
     private String name;
     private Boolean manual;
     private CarFormat body;
+    @Singular
+    private List<Car> cars;
 
     @Getter
     @Setter
@@ -37,6 +39,5 @@ public class BrandModel {
         private Brand brand;
     }
 
-    @Singular
-    private List<Car> cars;
+
 }

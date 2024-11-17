@@ -18,6 +18,8 @@ public class GetBrandResponse {
     private String name;
     private Boolean manual;
     private CarFormat body;
+    @Singular
+    private List<Car> cars;
 
     @Getter
     @Setter
@@ -31,6 +33,4 @@ public class GetBrandResponse {
         private Integer horsePower;
         private LocalDate registration;
     }
-    @Singular
-    private List<Car> cars;
 }

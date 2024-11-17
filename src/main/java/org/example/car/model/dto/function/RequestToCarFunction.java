@@ -6,20 +6,21 @@ import org.example.car.model.dto.PutBrandRequest;
 import org.example.car.model.dto.PutCarRequest;
 import org.example.user.entity.User;
 
-import java.util.function.Function;
+import java.util.UUID;
+import org.example.component.TriFunction;
 
-public class RequestToCarFunction implements Function<PutCarRequest, Car> {
+public class RequestToCarFunction implements TriFunction<UUID, UUID, PutCarRequest, Car> {
     @Override
-    public Car apply(PutCarRequest putCarRequest) {
+    public Car apply(UUID brandId, UUID carId, PutCarRequest request) {
         return Car.builder()
-                .horsePower(putCarRequest.getHorsePower())
-                .registration(putCarRequest.getRegistration())
-                .user(User.builder()
-                        .id(putCarRequest.getUser())
-                        .build())
+                .id(carId)
+                .horsePower(request.getHorsePower())
+                .registration(request.getRegistration())
                 .brand(Brand.builder()
-                        .id(putCarRequest.getBrand()).build())
-                .id(putCarRequest.getId())
+                        .id(brandId).build())
+                .user(User.builder()
+                        .id(request.getUser())
+                        .build())
                 .build();
     }
 }

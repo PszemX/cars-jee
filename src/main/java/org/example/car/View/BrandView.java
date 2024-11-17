@@ -1,4 +1,5 @@
 package org.example.car.View;
+
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
@@ -12,6 +13,7 @@ import org.example.car.entity.Car;
 import org.example.car.model.BrandModel;
 import org.example.car.service.BrandService;
 import org.example.car.service.CarService;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Optional;
@@ -33,7 +35,7 @@ public class BrandView implements Serializable {
 
 
     @Inject
-    public BrandView(BrandService service, ModelFunctionFactory factory,CarService carService) {
+    public BrandView(BrandService service, ModelFunctionFactory factory, CarService carService) {
         this.service = service;
         this.factory = factory;
         this.carService = carService;
@@ -47,7 +49,8 @@ public class BrandView implements Serializable {
             FacesContext.getCurrentInstance().getExternalContext().responseSendError(HttpServletResponse.SC_NOT_FOUND, "Brand not found");
         }
     }
-    public String deleteCar(UUID id){
+
+    public String deleteCar(UUID id) {
         carService.deleteCar(Car.builder().id(id).build());
         String viewId = FacesContext.getCurrentInstance().getViewRoot().getViewId();
         return viewId + "?faces-redirect=true&includeViewParams=true";

@@ -8,10 +8,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.factories.ModelFunctionFactory;
-import org.example.car.entity.Brand;
 import org.example.car.entity.Car;
 import org.example.car.model.CarModel;
-import org.example.car.service.BrandService;
 import org.example.car.service.CarService;
 
 import java.io.IOException;
@@ -34,7 +32,7 @@ public class CarView implements Serializable {
 
 
     @Inject
-    public CarView(CarService service, ModelFunctionFactory factory ) {
+    public CarView(CarService service, ModelFunctionFactory factory) {
         this.service = service;
         this.factory = factory;
     }

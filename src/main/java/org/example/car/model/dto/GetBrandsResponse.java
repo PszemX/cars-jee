@@ -14,6 +14,9 @@ import java.util.UUID;
 @ToString
 @EqualsAndHashCode
 public class GetBrandsResponse {
+    @Singular
+    private List<Brand> brands;
+
     @Getter
     @Setter
     @Builder
@@ -27,6 +30,4 @@ public class GetBrandsResponse {
         private Boolean manual;
         private CarFormat body;
     }
-    @Singular
-    private List<Brand> brands;
 }

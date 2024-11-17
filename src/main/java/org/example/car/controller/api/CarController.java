@@ -4,9 +4,11 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import org.example.car.model.dto.GetCarResponse;
 import org.example.car.model.dto.GetCarsResponse;
+import org.example.car.model.dto.PatchCarRequest;
 import org.example.car.model.dto.PutCarRequest;
 
 import java.util.UUID;
+
 @Path("")
 public interface CarController {
     @GET
@@ -32,10 +34,13 @@ public interface CarController {
     void deleteCar(@PathParam("id") UUID id);
 
 
-
     @PUT
     @Path("/brands/{brandId}/cars/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     void putCar(@PathParam("brandId") UUID brandId, @PathParam("id") UUID id, PutCarRequest request);
 
+    @PATCH
+    @Path("/cars/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    void patchProperty(@PathParam("id") UUID id, PatchCarRequest request);
 }

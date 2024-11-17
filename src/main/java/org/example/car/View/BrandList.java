@@ -1,23 +1,19 @@
 package org.example.car.View;
 
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.example.factories.ModelFunctionFactory;
 import org.example.car.entity.Brand;
-import org.example.car.entity.Car;
 import org.example.car.model.BrandsModel;
 import org.example.car.service.BrandService;
-import org.example.car.service.CarService;
 
-import java.util.UUID;
-
-@RequestScoped
+@ApplicationScoped
 @Named
 public class BrandList {
     private final BrandService service;
-    private BrandsModel brands;
     private final ModelFunctionFactory factory;
+    private BrandsModel brands;
 
 
     @Inject

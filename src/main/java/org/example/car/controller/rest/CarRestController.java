@@ -1,43 +1,34 @@
 package org.example.car.controller.rest;
 
 import jakarta.inject.Inject;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.transaction.TransactionalException;
 import jakarta.ws.rs.BadRequestException;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.WebApplicationException;
-import jakarta.ws.rs.core.Context;
-import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.UriInfo;
-import org.example.car.controller.api.BrandController;
+import lombok.extern.java.Log;
 import org.example.factories.DtoFunctionFactory;
 import org.example.car.controller.api.CarController;
+import org.example.car.entity.Brand;
 import org.example.car.entity.Car;
 import org.example.car.model.dto.GetCarResponse;
 import org.example.car.model.dto.GetCarsResponse;
+import org.example.car.model.dto.PatchCarRequest;
 import org.example.car.model.dto.PutCarRequest;
 import org.example.car.service.CarService;
 
 import java.util.UUID;
+import java.util.logging.Level;
 
 @Path("")
+@Log
 public class CarRestController implements CarController {
     private final CarService service;
     private final DtoFunctionFactory factory;
 
-    private final UriInfo uriInfo;
-    private HttpServletResponse response;
-
-    @Context
-    public void setResponse(HttpServletResponse response) {
-        this.response = response;
-    }
-
     @Inject
-    public CarRestController(CarService service, DtoFunctionFactory factory, UriInfo uriInfo) {
+    public CarRestController(CarService service, DtoFunctionFactory factory) {
         this.service = service;
         this.factory = factory;
-        this.uriInfo = uriInfo;
     }
 
     @Override
@@ -46,8 +37,8 @@ public class CarRestController implements CarController {
     }
 
     @Override
-    public GetCarsResponse getCarOfBrand(UUID id) {
-        return factory.carsToResponse().apply(service.findAllByBrand(id));
+    public GetCarsResponse getCarOfBrand(UUID uuid) {
+        return factory.carsToResponse().apply(service.findAllByBrand(Brand.builder().id(uuid).build()));
     }
 
     @Override
@@ -64,17 +55,24 @@ public class CarRestController implements CarController {
 
     @Override
     public void putCar(UUID brandId, UUID id, PutCarRequest request) {
-        request.setId(id);
-        request.setBrand(brandId);
         try {
-            service.updateCar(factory.requestToCar().apply(request));
-            response.setHeader("Location", uriInfo.getBaseUriBuilder()
-                    .path(CarController.class, "getCar")
-                    .build(id)
-                    .toString());
-            throw new WebApplicationException(Response.Status.CREATED);
-        } catch (IllegalArgumentException ex) {
-            throw new BadRequestException(ex);
+            service.createCar(factory.requestToCar().apply(brandId,id,request));
+        }  catch (TransactionalException ex) {
+            if (ex.getCause() instanceof IllegalArgumentException) {
+                log.log(Level.WARNING, ex.getMessage(), ex);
+                throw new BadRequestException(ex);
+            }
+            throw ex;
         }
+    }
+
+    @Override
+    public void patchProperty(UUID id, PatchCarRequest request) {
+        service.findCarById(id).ifPresentOrElse(
+                entity -> service.updateCar(factory.updateCar().apply(entity, request)),
+                () -> {
+                    throw new NotFoundException();
+                }
+        );
     }
 }

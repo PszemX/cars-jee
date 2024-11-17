@@ -14,6 +14,9 @@ import java.util.UUID;
 @ToString
 @EqualsAndHashCode
 public class GetCarsResponse {
+    @Singular
+    private List<Car> cars;
+
     @Getter
     @Setter
     @Builder
@@ -26,6 +29,4 @@ public class GetCarsResponse {
         private Integer horsePower;
         private LocalDate registration;
     }
-    @Singular
-    private List<Car> cars;
 }

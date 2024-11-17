@@ -2,7 +2,10 @@ package org.example.car.controller.api;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
-import org.example.car.model.dto.*;
+import org.example.car.model.dto.GetBrandResponse;
+import org.example.car.model.dto.GetBrandsResponse;
+import org.example.car.model.dto.PatchBrandRequest;
+import org.example.car.model.dto.PutBrandRequest;
 
 import java.util.UUID;
 public interface BrandController {
@@ -24,4 +27,9 @@ public interface BrandController {
     @DELETE
     @Path("/brands/{id}")
     void deleteBrand(@PathParam("id") UUID uuid);
+
+    @PATCH
+    @Path("/brands/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    void patchBrand(@PathParam("id") UUID id, PatchBrandRequest request);
 }

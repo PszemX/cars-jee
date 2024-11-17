@@ -20,6 +20,9 @@ public class GetUserResponse {
     private Integer age;
     private Boolean isPolish;
 
+    @Singular
+    private List<Car> cars;
+
     @Getter
     @Setter
     @Builder
@@ -33,6 +36,4 @@ public class GetUserResponse {
         private LocalDate registration;
         private CarFormat carFormat;
     }
-    @Singular
-    private List<Car> cars;
 }
