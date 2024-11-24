@@ -23,7 +23,7 @@ public class Car implements Serializable {
     private Integer horsePower;
     private LocalDate registration;
     @ManyToOne
-    @JoinColumn(name = "user_username")
+    @JoinColumn(name = "user_name")
     private User user;
     @ManyToOne
     @JoinColumn(name = "brand")
@@ -31,6 +31,6 @@ public class Car implements Serializable {
 
     @Override
     public String toString() {
-        return "\n" + id + "\n" + brand.getName() + "\nOwner: " + user.getName() + "\nHP: " + horsePower + "\nRegistered: " + registration + "\n";
+        return "\n" + id + "\n" + brand.getName() + "\nOwner: " + user.getName() + "\nHP: " + horsePower + "\nRegistered: " + registration + "\n" + "Brand: " + brand + "\n" + "User: " + user + "\n";
     }
 }

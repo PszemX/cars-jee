@@ -11,13 +11,12 @@
         <feature>persistence-3.1</feature>
     </featureManager>
 
-    <dataSource id="SimpleRpgCharactersDataSource" jndiName="jdbc/SimpleCars">
+    <dataSource id="Cars" jndiName="jdbc/cars">
         <jdbcDriver javax.sql.XADataSource="org.h2.jdbcx.JdbcDataSource"
                     javax.sql.ConnectionPoolDataSource="org.h2.jdbcx.JdbcDataSource"
                     javax.sql.DataSource="org.h2.jdbcx.JdbcDataSource"
                     libraryRef="H2JDBCLib"/>
-        <properties URL="jdbc:h2:mem:simple-cars"/>
-        <!--        <properties URL="jdbc:h2:/tmp/simple-rpg-characters;AUTO_SERVER=TRUE"/>-->
+        <properties URL="jdbc:h2:mem:cars"/>
     </dataSource>
 
     <library id="H2JDBCLib">

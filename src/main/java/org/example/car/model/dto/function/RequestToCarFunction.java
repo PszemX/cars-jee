@@ -18,9 +18,9 @@ public class RequestToCarFunction implements TriFunction<UUID, UUID, PutCarReque
                 .registration(request.getRegistration())
                 .brand(Brand.builder()
                         .id(brandId).build())
-                .user(User.builder()
-                        .id(request.getUser())
-                        .build())
+//                .user(User.builder()
+//                        .id(request.getUser())
+//                        .build())
                 .build();
     }
 }

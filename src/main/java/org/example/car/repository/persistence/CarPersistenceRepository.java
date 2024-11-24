@@ -35,6 +35,7 @@ public class CarPersistenceRepository implements CarRepository {
     @Override
     public void create(Car entity) {
         em.persist(entity);
+        em.refresh(em.find(Brand.class, entity.getBrand().getId()));
     }
 
     @Override
@@ -68,9 +69,11 @@ public class CarPersistenceRepository implements CarRepository {
 
     @Override
     public List<Car> findAllByBrand(Brand brand) {
-        return em.createQuery("select c from Car c where c.brand = :brand", Car.class)
-                .setParameter("brand", brand)
-                .getResultList();
+        brand = em.find(Brand.class, brand.getId());
+        return brand.getCars();
+//        return em.createQuery("select c from Car c where c.brand = :brand", Car.class)
+//                .setParameter("brand", brand)
+//                .getResultList();
     }
 
 

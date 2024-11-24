@@ -59,9 +59,11 @@ public class DataInitialization implements ServletContextListener {
                 .body(CarFormat.Sedan)
                 .build();
 
-        brandService.createBrand(modelSuv);
-        brandService.createBrand(modelCabriolet);
-        brandService.createBrand(modelSedan);
+        if (brandService.findAllBrands().isEmpty()) {
+            brandService.createBrand(modelSuv);
+            brandService.createBrand(modelCabriolet);
+            brandService.createBrand(modelSedan);
+        }
 
         User user1 = User.builder()
                 .id(UUID.randomUUID())
@@ -91,10 +93,12 @@ public class DataInitialization implements ServletContextListener {
                 .isPolish(true)
                 .build();
 
-        userService.createUser(user1);
-        userService.createUser(user2);
-        userService.createUser(user3);
-        userService.createUser(user4);
+        if (userService.findAllUsers().isEmpty()) {
+            userService.createUser(user1);
+            userService.createUser(user2);
+            userService.createUser(user3);
+            userService.createUser(user4);
+        }
 
         Car car1 = Car.builder()
                 .id(UUID.randomUUID())
@@ -128,9 +132,11 @@ public class DataInitialization implements ServletContextListener {
                 .user(user4)
                 .build();
 
-        carService.createCar(car1);
-        carService.createCar(car2);
-        carService.createCar(car3);
-        carService.createCar(car4);
+        if(carService.findAllCars().isEmpty()) {
+            carService.createCar(car1);
+            carService.createCar(car2);
+            carService.createCar(car3);
+            carService.createCar(car4);
+        }
     }
 }

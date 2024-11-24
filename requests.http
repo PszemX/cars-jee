@@ -46,18 +46,17 @@ Content-Type: application/json
 
 GET http://localhost:9082/cars/api/cars
 
-
 ###
 
 # Get all cars of a given brand
 
-GET http://localhost:9082/cars/api/brands/eb3cc89e-083e-4702-b5c8-72f01bb0814d/cars
+GET http://localhost:9082/cars/api/brands/79fac802-30a6-4ffb-b4e1-33d8453408c8/cars
 
 ###
 
 # Get a car
 
-GET http://localhost:9082/cars/api/cars/7b66a112-e69d-401d-bea4-d1bb9796e987
+GET http://localhost:9082/cars/api/cars/dd156588-751c-4653-9642-064597b2e363
 
 ###
 
@@ -68,12 +67,12 @@ DELETE http://localhost:9082/cars/api/cars/7b66a112-e69d-401d-bea4-d1bb9796e987
 
 ###
 
-PUT http://localhost:9082/cars/api/brands/cd42d39a-e527-4f30-86f7-4f8b75ab285c/cars/7b66a112-e69d-401d-bea4-d1bb9796e987
+PUT http://localhost:9082/cars/api/brands/79fac802-30a6-4ffb-b4e1-33d8453408c8/cars/7b66a112-e69d-401d-bea4-d1bb9796e987
 Content-Type: application/json
 
 {
-  "horsePower": 999,
-  "user": "e8a317c9-3c8d-4b0a-a0af-bc1e30a1d7c9"
+  "id": "7b66a112-e69d-401d-bea4-d1bb9796e987",
+  "horsePower": 999
 }
 
 
