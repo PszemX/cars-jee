@@ -6,7 +6,7 @@ import org.example.car.model.dto.GetBrandsResponse;
 import java.util.List;
 import java.util.function.Function;
 
-public class BrandsToResponseFunction implements Function<List<Brand>, GetBrandsResponse>{
+public class BrandsToResponseFunction implements Function<List<Brand>, GetBrandsResponse> {
     @Override
     public GetBrandsResponse apply(List<Brand> entities) {
         return GetBrandsResponse.builder()

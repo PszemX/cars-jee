@@ -3,7 +3,7 @@ package org.example.repository.api;
 import java.util.List;
 import java.util.Optional;
 
-public interface Repository <E, K>{
+public interface Repository<E, K> {
     Optional<E> find(K id);
 
     List<E> findAll();

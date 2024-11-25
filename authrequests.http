@@ -1,0 +1,214 @@
+//admin
+//YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+
+//User
+//a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+
+
+// *********************** //
+// ********************** //
+// ********************* //
+// ******* ADMIN ****** //
+// *******\/\/\/****** //
+
+### [ADMIN] GET ALL BRANDS
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/brands
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+
+### [ADMIN] GET SINGLE BRAND
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/brands/6abd5ba8-37ff-4c0c-8e75-b3baa6632e05
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+
+### [ADMIN] CREATE NEW BRAND
+// @no-cookie-jar
+PUT http://localhost:9083/labs1-1.0-SNAPSHOT/api/brands/6abd5ba8-37ff-4c0c-8e75-b3baa6632e05
+Content-Type: application/json
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+
+{
+  "name": "BMW XL123",
+  "manual": true,
+  "body": "Suv"
+}
+
+### [ADMIN] GET CREATED BRAND
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/brands/6abd5ba8-37ff-4c0c-8e75-b3baa6632e05
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+
+### [ADMIN] DELETE BRAND
+// @no-cookie-jar
+DELETE http://localhost:9083/labs1-1.0-SNAPSHOT/api/brands/6abd5ba8-37ff-4c0c-8e75-b3baa6632e05
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+
+### [ADMIN] GET ALL CARS
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/cars
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+
+### [ADMIN] GET SINGLE CAR
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/cars/73e54c57-0e7d-4f03-bcd2-5385877f2d1b
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+
+### [ADMIN] CREATE NEW CAR
+// @no-cookie-jar
+PUT http://localhost:9083/labs1-1.0-SNAPSHOT/api/cars/73e54c57-0e7d-4f03-bcd2-5385877f2d1b
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+Content-Type: application/json
+
+{
+  "horsePower": 999,
+  "registration": "2024-11-25",
+  "brand": "cdfbd2ad-7c1e-48d7-9f91-2d6d0c089b60",
+  "user": "665e4aba-0640-49c2-b71f-4ddf1f9674ba"
+}
+
+### [ADMIN] GET CREATED CAR
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/cars/73e54c57-0e7d-4f03-bcd2-5385877f2d1b
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+
+### [ADMIN] DELETE CAR
+// @no-cookie-jar
+DELETE http://localhost:9083/labs1-1.0-SNAPSHOT/api/cars/73e54c57-0e7d-4f03-bcd2-5385877f2d1b
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+
+### [ADMIN] GET ALL USERS
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/users
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+
+### [ADMIN] GET SINGLE USER
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/users/e197ac3e-e450-4099-b638-00490c47eb74
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+
+### [ADMIN] CREATE NEW USER
+// @no-cookie-jar
+PUT http://localhost:9083/labs1-1.0-SNAPSHOT/api/users/391a9234-d715-4feb-8624-ae9cebd0dbe4
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+Content-Type: application/json
+
+{
+  "login": "pszemo",
+  "name": "Przemek",
+  "password": "pszemo",
+  "isPolish": false
+}
+
+### [ADMIN] GET CREATED USER
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/users/391a9234-d715-4feb-8624-ae9cebd0dbe4
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+
+### [ADMIN] DELETE USER
+// @no-cookie-jar
+DELETE http://localhost:9083/labs1-1.0-SNAPSHOT/api/users/391a9234-d715-4feb-8624-ae9cebd0dbe4
+Authorization: Basic YWRtaW4tc2VydmljZTphZG1pbmFkbWlu
+
+
+// *********************** //
+// ********************** //
+// ********************* //
+// ******* USER ******* //
+// *******\/\/\/****** //
+
+
+### [USER] GET ALL BRANDS
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/brands
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+
+### [USER] GET SINGLE BRAND (ERROR)
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/brands/6abd5ba8-37ff-4c0c-8e75-b3baa6632e05
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+
+### [USER] CREATE NEW BRAND (ERROR)
+// @no-cookie-jar
+PUT http://localhost:9083/labs1-1.0-SNAPSHOT/api/brands/6abd5ba8-37ff-4c0c-8e75-b3baa6632e05
+Content-Type: application/json
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+
+{
+  "name": "BMW XL123",
+  "manual": true,
+  "body": "Suv"
+}
+
+### [USER] GET CREATED BRAND (ERROR)
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/brands/6abd5ba8-37ff-4c0c-8e75-b3baa6632e05
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+
+### [USER] DELETE BRAND (ERROR)
+// @no-cookie-jar
+DELETE http://localhost:9083/labs1-1.0-SNAPSHOT/api/brands/6abd5ba8-37ff-4c0c-8e75-b3baa6632e05
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+
+### [USER] GET ALL CARS (ONLY OWNED CARS)
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/cars
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+
+### [USER] GET SINGLE CAR (ERROR)
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/cars/73e54c57-0e7d-4f03-bcd2-5385877f2d1b
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+
+### [USER] CREATE NEW CAR
+// @no-cookie-jar
+PUT http://localhost:9083/labs1-1.0-SNAPSHOT/api/cars/cbfef27d-e38b-4651-ad1e-0385d25cd89d
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+Content-Type: application/json
+
+{
+  "horsePower": 999,
+  "brand": "cdfbd2ad-7c1e-48d7-9f91-2d6d0c089b60"
+}
+
+### [USER] GET CREATED CAR
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/cars/cbfef27d-e38b-4651-ad1e-0385d25cd89d
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+
+### [USER] DELETE CAR
+// @no-cookie-jar
+DELETE http://localhost:9083/labs1-1.0-SNAPSHOT/api/cars/cbfef27d-e38b-4651-ad1e-0385d25cd89d
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+
+### [USER] GET ALL USERS (ERROR)
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/users
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+
+### [USER] GET SINGLE USER (ERROR)
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/users/e197ac3e-e450-4099-b638-00490c47eb74
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+
+### [USER] CREATE NEW USER
+// @no-cookie-jar
+PUT http://localhost:9083/labs1-1.0-SNAPSHOT/api/users/391a9234-d715-4feb-8624-ae9cebd0dbe3
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+Content-Type: application/json
+
+{
+  "login": "pszemo",
+  "name": "Przemek",
+  "password": "pszemo",
+  "isPolish": false
+}
+
+### [USER] GET CREATED USER (ERROR)
+// @no-cookie-jar
+GET http://localhost:9083/labs1-1.0-SNAPSHOT/api/users/391a9234-d715-4feb-8624-ae9cebd0dbe4
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr
+
+### [USER] DELETE USER (ERROR)
+// @no-cookie-jar
+DELETE http://localhost:9083/labs1-1.0-SNAPSHOT/api/users/391a9234-d715-4feb-8624-ae9cebd0dbe4
+Authorization: Basic a3J6eXN6dG9mMTIzOmtyenlzenRvZmVr

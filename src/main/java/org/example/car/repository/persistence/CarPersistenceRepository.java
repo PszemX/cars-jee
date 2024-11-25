@@ -1,6 +1,6 @@
 package org.example.car.repository.persistence;
 
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@ApplicationScoped
+@Dependent
 public class CarPersistenceRepository implements CarRepository {
     private EntityManager em;
 
@@ -36,6 +36,7 @@ public class CarPersistenceRepository implements CarRepository {
     public void create(Car entity) {
         em.persist(entity);
         em.refresh(em.find(Brand.class, entity.getBrand().getId()));
+        em.refresh(em.find(User.class, entity.getUser().getId()));
     }
 
     @Override
@@ -69,11 +70,9 @@ public class CarPersistenceRepository implements CarRepository {
 
     @Override
     public List<Car> findAllByBrand(Brand brand) {
-        brand = em.find(Brand.class, brand.getId());
-        return brand.getCars();
-//        return em.createQuery("select c from Car c where c.brand = :brand", Car.class)
-//                .setParameter("brand", brand)
-//                .getResultList();
+        return em.createQuery("select c from Car c where c.brand = :brand", Car.class)
+                .setParameter("brand", brand)
+                .getResultList();
     }
 
 

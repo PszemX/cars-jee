@@ -25,6 +25,10 @@ public class User implements Serializable {
     @Column(name = "age")
     private Integer age;
     private Boolean isPolish;
+    private String login;
+
+    @ToString.Exclude
+    private String password;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
@@ -36,4 +40,9 @@ public class User implements Serializable {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private byte[] avatar;
+
+    @CollectionTable(name = "users__roles", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "role")
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;
 }

@@ -13,9 +13,10 @@ public class UsersToResponseFunction implements Function<List<User>, GetUsersRes
                 .users(entities.stream()
                         .map(user -> GetUsersResponse.User.builder()
                                 .id(user.getId())
+                                .isPolish(user.getIsPolish())
                                 .name(user.getName())
                                 .age(user.getAge())
-                                .isPolish(user.getIsPolish())
+                                .login(user.getLogin())
                                 .build())
                         .toList())
                 .build();

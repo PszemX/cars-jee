@@ -1,79 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html
-	lang="en"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="jakarta.faces.html"
-	xmlns:ui="jakarta.faces.facelets"
-	xmlns:f="jakarta.faces.core"
->
-	<f:view>
-		<h:head>
-			<meta charset="UTF-8" />
-			<meta name="description" content="Car dealership App" />
-			<meta name="keywords" content="Car" />
-			<meta name="author" content="Przemyslaw Szumczyk" />
-			<meta
-				name="viewport"
-				content="width=device-width, initial-scale=1.0"
-			/>
-			<title>Car Dealership</title>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core">
+<f:view>
+    <h:head>
+        <meta charset="UTF-8"/>
+        <meta name="description" content="Car rental App"/>
+        <meta name="keywords" content="Car"/>
+        <meta name="author" content="Jan Domozych"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Car Rental</title>
 
-			<h:outputStylesheet
-				library="webjars"
-				name="mdb-ui-kit/6.4.0/css/mdb.min.css"
-			/>
-			<h:outputStylesheet library="default" name="css/main.css" />
-			<h:outputScript
-				library="webjars"
-				name="mdb-ui-kit/6.4.0/js/mdb.min.js"
-			/>
-			<h:outputScript library="mdb" name="js/main.js" target="body" />
-		</h:head>
+        <h:outputStylesheet library="webjars" name="mdb-ui-kit/6.4.0/css/mdb.min.css"/>
+        <h:outputStylesheet library="default" name="css/main.css"/>
+        <h:outputScript library="webjars" name="mdb-ui-kit/6.4.0/js/mdb.min.js"/>
+        <h:outputScript library="mdb" name="js/main.js" target="body"/>
+    </h:head>
 
-		<h:body>
-			<div class="container">
-				<header class="mb-4 mt-4">
-					<h:graphicImage
-						value="https://img.freepik.com/free-vector/flat-design-car-dealer-logo_23-2149338508.jpg"
-						style="max-width: 150px"
-					/>
-					<h1>Car Dealership</h1>
-				</header>
+    <h:body>
+        <div class="container">
+            <header class="mb-4 mt-4">
+                <h:graphicImage  value = "https://i.pinimg.com/564x/0c/32/97/0c3297f3516a415219c7e89e16a4a3d2.jpg" style="max-width: 150px;"/>
+                <h1>Car Rental</h1>
+            </header>
 
-				<nav
-					class="navbar navbar-expand-lg navbar-light bg-light sticky-top"
-				>
-					<div class="container-fluid">
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item">
-								<h:link
-									styleClass="nav-link"
-									outcome="/index.xhtml"
-									>Home</h:link
-								>
-							</li>
-							<li class="nav-item">
-								<h:link
-									styleClass="nav-link"
-									outcome="/brand/brand_list.xhtml"
-									>Brands</h:link
-								>
-							</li>
-						</ul>
-					</div>
-				</nav>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+                <div class="container-fluid">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <h:link styleClass="nav-link" outcome="/index.xhtml">Home</h:link>
+                        </li>
+                        <li class="nav-item">
+                            <h:link styleClass="nav-link"
+                                    outcome="/brand/brand_list.xhtml">Brands</h:link>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-				<main class="mb-4 mt-4">
-					<ui:insert name="content" />
-				</main>
+            <main class="mb-4 mt-4">
+                <ui:insert name="content"/>
+            </main>
 
-				<footer
-					class="text-center text-lg-start bg-light text-muted p-2"
-				>
-					<div class="text-center">This is a footer, +1 point :)</div>
-				</footer>
-			</div>
-		</h:body>
-	</f:view>
+            <footer class="text-center text-lg-start bg-light text-muted p-2">
+                <div class="text-center">
+                    I love PG, This is footer!
+                </div>
+            </footer>
+        </div>
+    </h:body>
+</f:view>
 </html>

@@ -27,6 +27,11 @@ public interface CarController {
     @Produces(MediaType.APPLICATION_JSON)
     GetCarResponse getCar(@PathParam("id") UUID id);
 
+    @PUT
+    @Path("/cars/{id}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    void putCar(@PathParam("id") UUID id, PutCarRequest request);
+
 
     @DELETE
     @Path("/cars/{id}")
@@ -43,4 +48,5 @@ public interface CarController {
     @Path("/cars/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     void patchProperty(@PathParam("id") UUID id, PatchCarRequest request);
+
 }

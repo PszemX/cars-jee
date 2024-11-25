@@ -1,5 +1,7 @@
 package org.example.car.model.dto;
+
 import lombok.*;
+import org.example.car.entity.CarFormat;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -11,11 +13,10 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
-
 public class PutCarRequest {
     private UUID id;
     private Integer horsePower;
     private LocalDate registration;
-    private UUID user;
     private UUID brand;
+    private UUID user;
 }

@@ -79,3 +79,28 @@ Content-Type: application/json
 ###
 
 GET http://localhost:9082/cars/api/cars/580a1cb0-2e6a-4b43-86a3-1033c9bde55b
+
+
+###
+
+# Get all users.
+
+GET http://localhost:9082/cars/api/users
+
+###
+
+# create user
+
+PUT http://localhost:9082/cars/api/users/0ca05b76-9b5a-4451-98b2-3f31f1d75589
+Content-Type: application/json
+
+{
+  "name": "Przemek",
+  "isPolish": true
+}
+
+###
+
+# Get user.
+
+GET http://localhost:9082/cars/api/users/0ca05b76-9b5a-4451-98b2-3f31f1d75589

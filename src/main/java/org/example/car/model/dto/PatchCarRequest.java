@@ -1,16 +1,9 @@
 package org.example.car.model.dto;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import org.example.car.entity.CarFormat;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -20,7 +13,6 @@ import java.util.UUID;
 @ToString
 @EqualsAndHashCode
 public class PatchCarRequest {
-    private UUID id;
     private Integer horsePower;
     private LocalDate registration;
 }

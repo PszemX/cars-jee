@@ -18,8 +18,8 @@ public class GetUserResponse {
     private UUID id;
     private String name;
     private Integer age;
+    private String login;
     private Boolean isPolish;
-
     @Singular
     private List<Car> cars;
 
@@ -34,6 +34,5 @@ public class GetUserResponse {
         private UUID id;
         private Integer horsePower;
         private LocalDate registration;
-        private CarFormat carFormat;
     }
 }

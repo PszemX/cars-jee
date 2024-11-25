@@ -5,7 +5,7 @@ import org.example.car.model.dto.PatchCarRequest;
 
 import java.util.function.BiFunction;
 
-public class UpdateCarWithRequestFunction implements BiFunction<Car, PatchCarRequest,Car> {
+public class UpdateCarWithRequestFunction implements BiFunction<Car, PatchCarRequest, Car> {
     @Override
     public Car apply(Car car, PatchCarRequest patchCarRequest) {
         return Car.builder()

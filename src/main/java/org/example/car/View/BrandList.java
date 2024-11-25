@@ -1,25 +1,29 @@
 package org.example.car.View;
 
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.example.factories.ModelFunctionFactory;
-import org.example.car.entity.Brand;
 import org.example.car.model.BrandsModel;
 import org.example.car.service.BrandService;
 
 @ApplicationScoped
 @Named
 public class BrandList {
-    private final BrandService service;
     private final ModelFunctionFactory factory;
+    private BrandService service;
     private BrandsModel brands;
 
 
     @Inject
-    public BrandList(BrandService service, ModelFunctionFactory factory) {
-        this.service = service;
+    public BrandList(ModelFunctionFactory factory) {
         this.factory = factory;
+    }
+
+    @EJB
+    public void setService(BrandService service) {
+        this.service = service;
     }
 
     public BrandsModel getBrands() {
@@ -30,7 +34,7 @@ public class BrandList {
     }
 
     public String deleteAction(BrandsModel.Brand brand) {
-        service.deleteBrand(Brand.builder().id(brand.getId()).build());
+        service.deleteBrand(brand.getId());
         return "brand_list?faces-redirect=true";
     }
 }

@@ -28,7 +28,7 @@ public class GetUsersResponse {
         private UUID id;
         private String name;
         private Integer age;
+        private String login;
         private Boolean isPolish;
     }
-
 }

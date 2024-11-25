@@ -1,5 +1,6 @@
 package org.example.user.view;
 
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -11,20 +12,24 @@ import org.example.user.service.UserService;
 @ApplicationScoped
 @Named
 public class UserList {
-    private final UserService service;
     private final ModelFunctionFactory factory;
+    private UserService service;
     private UsersModel users;
 
 
     @Inject
-    public UserList(UserService service, ModelFunctionFactory factory) {
-        this.service = service;
+    public UserList(ModelFunctionFactory factory) {
         this.factory = factory;
+    }
+
+    @EJB
+    public void setService(UserService service) {
+        this.service = service;
     }
 
     public UsersModel getUsers() {
         if (users == null) {
-            users = factory.usersToModel().apply(service.findAllUsers());
+            users = factory.usersToModel().apply(service.findAll());
         }
         return users;
     }

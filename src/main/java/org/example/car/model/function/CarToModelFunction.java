@@ -13,8 +13,8 @@ public class CarToModelFunction implements Function<Car, CarModel>, Serializable
                 .id(entity.getId())
                 .horsePower(entity.getHorsePower())
                 .registration(entity.getRegistration())
-                .brand(entity.getBrand())
-                .user(entity.getUser())
+                .brand(entity.getBrand().getName())
+                .user(entity.getUser().getName())
                 .build();
     }
 }

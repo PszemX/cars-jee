@@ -1,13 +1,10 @@
 package org.example.factories;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import org.example.car.model.dto.PatchBrandRequest;
 import org.example.car.model.dto.function.*;
 import org.example.user.dto.function.RequestToUserFunction;
 import org.example.user.dto.function.UserToResponseFunction;
 import org.example.user.dto.function.UsersToResponseFunction;
-
-import java.util.function.BiFunction;
 
 @ApplicationScoped
 public class DtoFunctionFactory {
@@ -46,9 +43,14 @@ public class DtoFunctionFactory {
     public RequestToCarFunction requestToCar() {
         return new RequestToCarFunction();
     }
-
-    public UpdateBrandWithRequestFunction updateProperty() { return new UpdateBrandWithRequestFunction();
+    public RequestToCarFunction2Params requestToCar2Params() {
+        return new RequestToCarFunction2Params();
     }
-    public UpdateCarWithRequestFunction updateCar() { return new UpdateCarWithRequestFunction();
+    public UpdateBrandWithRequestFunction updateProperty() {
+        return new UpdateBrandWithRequestFunction();
+    }
+
+    public UpdateCarWithRequestFunction updateCar() {
+        return new UpdateCarWithRequestFunction();
     }
 }

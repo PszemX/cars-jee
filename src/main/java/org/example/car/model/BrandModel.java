@@ -1,13 +1,11 @@
 package org.example.car.model;
 
+import lombok.*;
+import org.example.car.entity.CarFormat;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
-
-import lombok.*;
-import org.example.car.entity.Brand;
-import org.example.car.entity.CarFormat;
-import org.example.user.entity.User;
 
 @Getter
 @Setter
@@ -35,9 +33,5 @@ public class BrandModel {
         private UUID id;
         private Integer horsePower;
         private LocalDate registration;
-        private User user;
-        private Brand brand;
     }
-
-
 }

@@ -1,17 +1,7 @@
 package org.example.car.model;
 
-import lombok.ToString;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-import org.example.car.entity.Brand;
+import lombok.*;
 import org.example.car.entity.CarFormat;
-import org.example.user.entity.User;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -27,6 +17,6 @@ public class CarModel {
     private UUID id;
     private Integer horsePower;
     private LocalDate registration;
-    private User user;
-    private Brand brand;
+    private String brand;
+    private String user;
 }

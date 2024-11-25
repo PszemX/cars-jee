@@ -8,6 +8,7 @@ import org.example.car.model.dto.PatchBrandRequest;
 import org.example.car.model.dto.PutBrandRequest;
 
 import java.util.UUID;
+
 public interface BrandController {
     @GET
     @Path("/brands/{id}")

@@ -13,6 +13,7 @@ public class UserToResponseFunction implements Function<User, GetUserResponse> {
                 .name(user.getName())
                 .age(user.getAge())
                 .isPolish(user.getIsPolish())
+                .login(user.getLogin())
                 .cars(user.getCars().stream()
                         .map(car -> GetUserResponse.Car.builder()
                                 .horsePower(car.getHorsePower())

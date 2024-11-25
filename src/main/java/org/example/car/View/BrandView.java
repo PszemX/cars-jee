@@ -1,5 +1,6 @@
 package org.example.car.View;
 
+import jakarta.ejb.EJB;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
@@ -22,10 +23,9 @@ import java.util.UUID;
 @ViewScoped
 @Named
 public class BrandView implements Serializable {
-    private final BrandService service;
-    private final CarService carService;
     private final ModelFunctionFactory factory;
-
+    private BrandService service;
+    private CarService carService;
     @Setter
     @Getter
     private UUID id;
@@ -35,9 +35,17 @@ public class BrandView implements Serializable {
 
 
     @Inject
-    public BrandView(BrandService service, ModelFunctionFactory factory, CarService carService) {
-        this.service = service;
+    public BrandView(ModelFunctionFactory factory) {
         this.factory = factory;
+    }
+
+    @EJB
+    public void setService(BrandService service) {
+        this.service = service;
+    }
+
+    @EJB
+    public void setCarService(CarService carService) {
         this.carService = carService;
     }
 

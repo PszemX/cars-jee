@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:f="jakarta.faces.core"
+                template="/WEB-INF/template/main.xhtml">
+
+    <f:metadata>
+        <f:viewParam name="id" value="#{carView.id}" required="true"/>
+        <f:viewAction action="#{carView.init()}"/>
+    </f:metadata>
+
+    <ui:define name="content">
+        <article>
+            <header><h2><h:outputText value="#{carView.car.title}"/></h2></header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="row mb-2">
+                            <div class="col-6">
+                                carFormat
+                            </div>
+                            <div class="col-6">
+                                <h:outputText value="#{carView.car.carFormat}"/>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-6">
+                                User
+                            </div>
+                            <div class="col-6">
+                                <h:outputText value="#{carView.car.user}"/>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-6">
+                                Brand
+                            </div>
+                            <div class="col-6">
+                                <h:outputText value="#{carView.car.brand}"/>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-6">
+                                director
+                            </div>
+                            <div class="col-6">
+                                <h:outputText value="#{carView.car.director}"/>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </article>
+    </ui:define>
+
+</ui:composition>

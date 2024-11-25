@@ -1,7 +1,8 @@
 package org.example.user.repository.persistence;
 
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import org.example.user.entity.User;
 import org.example.user.repository.api.UserRepository;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@ApplicationScoped
+@Dependent
 public class UserPersistenceRepository implements UserRepository {
     private EntityManager em;
 
@@ -44,4 +45,15 @@ public class UserPersistenceRepository implements UserRepository {
         em.merge(entity);
     }
 
+
+    @Override
+    public Optional<User> findByLogin(String login) {
+        try {
+            return Optional.of(em.createQuery("select u from User u where u.login = :login", User.class)
+                    .setParameter("login", login)
+                    .getSingleResult());
+        } catch (NoResultException ex) {
+            return Optional.empty();
+        }
+    }
 }

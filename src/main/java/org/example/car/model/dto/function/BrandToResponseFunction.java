@@ -2,8 +2,6 @@ package org.example.car.model.dto.function;
 
 import org.example.car.entity.Brand;
 import org.example.car.model.dto.GetBrandResponse;
-import org.example.user.dto.GetUserResponse;
-import org.example.user.entity.User;
 
 import java.util.function.Function;
 

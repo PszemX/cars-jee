@@ -13,9 +13,9 @@ public class UsersToModelFunction implements Function<List<User>, UsersModel> {
                 .users(entities.stream()
                         .map(user -> UsersModel.User.builder()
                                 .id(user.getId())
-                                .name(user.getName())
-                                .age(user.getAge())
                                 .isPolish(user.getIsPolish())
+                                .age(user.getAge())
+                                .name(user.getName())
                                 .build())
                         .toList())
                 .build();

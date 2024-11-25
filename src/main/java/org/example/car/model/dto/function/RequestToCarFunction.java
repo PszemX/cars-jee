@@ -1,13 +1,12 @@
 package org.example.car.model.dto.function;
 
+import org.example.component.TriFunction;
 import org.example.car.entity.Brand;
 import org.example.car.entity.Car;
-import org.example.car.model.dto.PutBrandRequest;
 import org.example.car.model.dto.PutCarRequest;
 import org.example.user.entity.User;
 
 import java.util.UUID;
-import org.example.component.TriFunction;
 
 public class RequestToCarFunction implements TriFunction<UUID, UUID, PutCarRequest, Car> {
     @Override
@@ -17,10 +16,11 @@ public class RequestToCarFunction implements TriFunction<UUID, UUID, PutCarReque
                 .horsePower(request.getHorsePower())
                 .registration(request.getRegistration())
                 .brand(Brand.builder()
-                        .id(brandId).build())
-//                .user(User.builder()
-//                        .id(request.getUser())
-//                        .build())
+                        .id(brandId)
+                        .build())
+                .user(User.builder()
+                        .id(request.getUser())
+                        .build())
                 .build();
     }
 }
