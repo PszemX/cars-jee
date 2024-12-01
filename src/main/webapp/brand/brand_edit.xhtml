@@ -12,12 +12,12 @@
 
     <ui:define name="content">
         <article>
-            <header><h2>Edit brand info</h2></header>
+            <header><h2><h:outputText value="#{msg['brand.edit.title']}" /></h2></header>
             <h:form styleClass="container" onreset="onReset()" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-4 p-2">
                         <div class="form-outline">
-                            <h:outputLabel for="name" value="Name:" styleClass="form-label"/>
+                            <h:outputLabel for="name" value="#{msg['brand.edit.name']}:" styleClass="form-label"/>
                             <h:inputText id="name" value="#{brandEdit.brand.name}" styleClass="form-control"/>
                         </div>
                     </div>
@@ -26,29 +26,19 @@
                 <div class="row">
                     <div class="col-4 p-2">
                         <div class="form-outline">
-                            <h:outputLabel for="popularityScore" value="Popularity Score:" styleClass="form-label"/>
-                            <h:inputText id="popularityScore" value="#{brandEdit.brand.popularityScore}" styleClass="form-control"/>
+                            <h:outputLabel for="popularityScore" value="#{msg['brand.edit.body']}:" styleClass="form-label"/>
+                            <h:inputText id="popularityScore" value="#{brandEdit.brand.body}" styleClass="form-control"/>
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-4 p-2">
-                        <div class="form-outline">
-                            <h:outputLabel for="description" value="Description:" styleClass="form-label"/>
-                            <h:inputTextarea id="description" value="#{brandEdit.brand.description}" styleClass="form-control" rows="4"/>
-                        </div>
-                    </div>
-                </div>
-
 
                 <div class="row">
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn btn-primary" value="Update"
+                        <h:commandButton styleClass="btn btn-primary" value="#{msg['brand.edit.update']}"
                                          action="#{brandEdit.saveAction()}"/>
                     </div>
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn btn-secondary" type="reset" value="Reset"/>
+                        <h:commandButton styleClass="btn btn-secondary" type="reset" value="#{msg['brand.edit.reset']}"/>
                     </div>
                 </div>
             </h:form>

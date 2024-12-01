@@ -1,12 +1,10 @@
-package org.example.user.model;
-
+package org.example.car.model;
 import lombok.*;
-
+import org.example.car.entity.CarFormat;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
-
 @Getter
 @Setter
 @Builder
@@ -14,10 +12,9 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
-public class UsersModel implements Serializable {
+public class CarsModel implements Serializable {
     @Singular
-    private List<User> users;
-
+    private List<Car> cars;
     @Getter
     @Setter
     @Builder
@@ -25,8 +22,9 @@ public class UsersModel implements Serializable {
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
     @ToString
     @EqualsAndHashCode
-    public static class User {
+    public static class Car {
         private UUID id;
-        private String login;
+        private Integer horsePower;
+        private LocalDate registration;
     }
 }

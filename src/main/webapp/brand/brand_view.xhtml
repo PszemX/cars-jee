@@ -18,48 +18,34 @@
                     <div class="col-4">
                         <div class="row mb-2">
                             <div class="col-6">
-                                description
+                                <h:outputText value="#{msg['brand.view.body']}" />
                             </div>
                             <div class="col-6">
-                                <h:outputText value="#{brandView.brand.description}"/>
+                                <h:outputText value="#{brandView.brand.body}"/>
                             </div>
                         </div>
 
-                        <div class="row mb-2">
-                            <div class="col-6">
-                                popularityScore
-                            </div>
-                            <div class="col-6">
-                                <h:outputText value="#{brandView.brand.popularityScore}"/>
-                            </div>
-                        </div>
-
-                        <h:dataTable value="#{brandView.brand.cars}" var="car"
+                        <h:dataTable value="#{brandView.cars.cars}" var="car"
                                      styleClass="table align-middle mb-0 bg-white" headerClass="bg-light">
-
                             <h:column>
-                                <f:facet name="header">Title</f:facet>
-                                <h:outputText value="#{car.title}"/>
+                                <f:facet name="header"><h:outputText value="#{msg['brand.view.title']}" /></f:facet>
+                                <h:outputText value="#{car.registration}"/>
                             </h:column>
                             <h:column>
-                                <f:facet name="header">View</f:facet>
-                                <h:link outcome="/car/car_view.xhtml" value="View">
+                                <f:facet name="header"><h:outputText value="#{msg['brand.view.view']}" /></f:facet>
+                                <h:link outcome="/car/car_view.xhtml" value="#{msg['brand.view.view']}">
                                     <f:param name="id" value="#{car.id}"/>
                                 </h:link>
                             </h:column>
                             <h:column>
-                                <f:facet name="header">Delete</f:facet>
+                                <f:facet name="header"><h:outputText value="#{msg['brand.view.delete']}" /></f:facet>
                                 <h:form>
-                                    <h:commandButton styleClass="btn" value="Delete"
+                                    <h:commandButton styleClass="btn" value="#{msg['brand.view.delete']}"
                                                      action="#{brandView.deleteCar(car.id)}"/>
                                 </h:form>
                             </h:column>
-
                         </h:dataTable>
-
-
                     </div>
-
                 </div>
             </div>
         </article>

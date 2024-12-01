@@ -12,13 +12,13 @@
 
     <ui:define name="content">
         <article>
-            <header><h2><h:outputText value="#{carView.car.title}"/></h2></header>
+            <header><h2><h:outputText value="#{carView.car.registration}"/></h2></header>
             <div class="container">
                 <div class="row">
                     <div class="col-4">
                         <div class="row mb-2">
                             <div class="col-6">
-                                carFormat
+                                <h:outputText value="#{msg['car.view.format']}" />
                             </div>
                             <div class="col-6">
                                 <h:outputText value="#{carView.car.carFormat}"/>
@@ -27,7 +27,7 @@
 
                         <div class="row mb-2">
                             <div class="col-6">
-                                User
+                                <h:outputText value="#{msg['car.view.user']}" />
                             </div>
                             <div class="col-6">
                                 <h:outputText value="#{carView.car.user}"/>
@@ -36,7 +36,7 @@
 
                         <div class="row mb-2">
                             <div class="col-6">
-                                Brand
+                                <h:outputText value="#{msg['car.view.brand']}" />
                             </div>
                             <div class="col-6">
                                 <h:outputText value="#{carView.car.brand}"/>
@@ -45,16 +45,13 @@
 
                         <div class="row mb-2">
                             <div class="col-6">
-                                director
+                                <h:outputText value="#{msg['car.view.horsePower']}" />
                             </div>
                             <div class="col-6">
-                                <h:outputText value="#{carView.car.director}"/>
+                                <h:outputText value="#{carView.car.horsePower}"/>
                             </div>
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
         </article>

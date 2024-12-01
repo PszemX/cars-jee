@@ -39,12 +39,17 @@ public class CarService {
 
     @RolesAllowed(UserRoles.USER)
     public Optional<Car> findCarById(UUID id) {
-        return carRepository.find(id);
+        return findForCallerPrincipal(id);
     }
 
     @RolesAllowed(UserRoles.USER)
     public List<Car> findAllCars() {
         return findAllForCallerPrincipal();
+    }
+
+    @RolesAllowed(UserRoles.USER)
+    public List<Car> findAllCarsByBrand(Brand brand) {
+        return findAllByBrandForCallerPrincipal(brand);
     }
 
     @RolesAllowed(UserRoles.ADMIN)
@@ -93,7 +98,23 @@ public class CarService {
         }
         User user = userRepository.findByLogin(securityContext.getCallerPrincipal().getName())
                 .orElseThrow(IllegalStateException::new);
+
         return find(user, id);
+    }
+
+    @RolesAllowed(UserRoles.USER)
+    public List<Car> findAllByBrandForCallerPrincipal(Brand brand) {
+        List<Car> carsByBrand = carRepository.findAllByBrand(brand);
+        if (securityContext.isCallerInRole(UserRoles.ADMIN)) {
+            return carsByBrand;
+        }
+
+        User user = userRepository.findByLogin(securityContext.getCallerPrincipal().getName())
+                .orElseThrow(() -> new IllegalStateException("Nie znaleziono zalogowanego użytkownika"));
+
+        return carsByBrand.stream()
+                .filter(car -> car.getUser().getName().equals(user.getName()))
+                .toList();
     }
 
     @RolesAllowed(UserRoles.USER)

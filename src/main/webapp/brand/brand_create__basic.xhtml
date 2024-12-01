@@ -11,12 +11,12 @@
 
     <ui:define name="content">
         <article>
-            <header><h2>Create Brand - basic information</h2></header>
+            <header><h2><h:outputText value="#{msg['brand.create.title']}" /></h2></header>
             <h:form styleClass="container" onreset="onReset()" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-4 p-2">
                         <div class="form-outline">
-                            <h:outputLabel for="name" value="Name:" styleClass="form-label"/>
+                            <h:outputLabel for="name" value="#{msg['brand.create.name']}:" styleClass="form-label"/>
                             <h:inputText id="name" value="#{brandCreate.brand.name}" styleClass="form-control"/>
                         </div>
                     </div>
@@ -25,24 +25,15 @@
                 <div class="row">
                     <div class="col-4 p-2">
                         <div class="form-outline">
-                            <h:outputLabel for="popularityScore" value="Popularity Score:" styleClass="form-label"/>
-                            <h:inputText id="popularityScore" value="#{brandCreate.brand.popularityScore}" styleClass="form-control"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-4 p-2">
-                        <div class="form-outline">
-                            <h:outputLabel for="description" value="Description:" styleClass="form-label"/>
-                            <h:inputTextarea id="description" value="#{brandCreate.brand.description}" styleClass="form-control" rows="4"/>
+                            <h:outputLabel for="description" value="#{msg['brand.create.body']}:" styleClass="form-label"/>
+                            <h:inputTextarea id="description" value="#{brandCreate.brand.body}" styleClass="form-control" rows="4"/>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-2 p-2 text-center">
-                        <h:commandButton styleClass="btn btn-primary" value="Create" action="#{brandCreate.saveAction()}"/>
+                        <h:commandButton styleClass="btn btn-primary" value="#{msg['brand.create.create']}" action="#{brandCreate.saveAction()}"/>
                     </div>
                 </div>
             </h:form>

@@ -1,7 +1,9 @@
 package org.example.factories;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import org.example.car.model.CarsModel;
 import org.example.car.model.function.*;
+import org.example.user.model.function.UserToModelFunction;
 import org.example.user.model.function.UsersToModelFunction;
 
 @ApplicationScoped
@@ -32,5 +34,12 @@ public class ModelFunctionFactory {
 
     public ModelToBrandFunction modelToBrand() {
         return new ModelToBrandFunction();
+    }
+
+    public UserToModelFunction userToModel() {
+        return new UserToModelFunction();
+    }
+    public CarsToModelFunction carsToModel() {
+        return new CarsToModelFunction();
     }
 }

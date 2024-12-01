@@ -57,6 +57,16 @@ public class DataInitialization {
     @SneakyThrows
     private void init() {
         // USERS
+        User admin = User.builder()
+                .id(UUID.randomUUID())
+                .login("admin")
+                .name("admin")
+                .password("adminadmin")
+                .age(999)
+                .isPolish(true)
+                .roles(List.of(UserRoles.ADMIN, UserRoles.USER))
+                .build();
+
         User user1 = User.builder()
                 .id(UUID.fromString("665e4aba-0640-49c2-b71f-4ddf1f9674ba"))
                 .name("krzysztof")
@@ -156,6 +166,7 @@ public class DataInitialization {
                 .build();
 
         if(userService.find("krzysztof123").isEmpty()){
+            userService.createUser(admin);
             userService.createUser(user1);
             userService.createUser(user2);
             userService.createUser(user3);

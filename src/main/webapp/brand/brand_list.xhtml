@@ -9,41 +9,41 @@
         <h:outputStylesheet library="brand" name="css/brand_list.css"/><!-- Automatically relocated to head. -->
 
         <article class="text--justified">
-            <header><h2>Users</h2></header>
+            <header><h2><h:outputText value="#{msg['brand.list.title']}" /></h2></header>
 
             <h:dataTable value="#{brandList.brands.brands}" var="brand"
                          styleClass="table align-middle mb-0 bg-white" headerClass="bg-light">
 
                 <h:column>
-                    <f:facet name="header">Name</f:facet>
+                    <f:facet name="header"><h:outputText value="#{msg['brand.list.name']}" /></f:facet>
                     <h:outputText value="#{brand.name}"/>
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">View</f:facet>
-                    <h:link outcome="/brand/brand_view.xhtml" value="View">
+                    <f:facet name="header"><h:outputText value="#{msg['brand.list.view']}" /></f:facet>
+                    <h:link outcome="/brand/brand_view.xhtml" value="#{msg['brand.list.view']}">
                         <f:param name="id" value="#{brand.id}"/>
                     </h:link>
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header">Edit</f:facet>
-                    <h:link outcome="/brand/brand_edit.xhtml" value="Edit">
+                    <f:facet name="header"><h:outputText value="#{msg['brand.list.edit']}" /></f:facet>
+                    <h:link outcome="/brand/brand_edit.xhtml" value="#{msg['brand.list.edit']}">
                         <f:param name="id" value="#{brand.id}"/>
                     </h:link>
                 </h:column>
 
-                <h:column>
-                    <f:facet name="header">Delete</f:facet>
+                <h:column rendered="#{facesContext.externalContext.isUserInRole('admin')}">
+                    <f:facet name="header"><h:outputText value="#{msg['brand.list.delete']}" /></f:facet>
                     <h:form>
-                        <h:commandButton styleClass="btn" value="Delete"
+                        <h:commandButton styleClass="btn" value="#{msg['brand.list.delete']}"
                                          action="#{brandList.deleteAction(brand)}"/>
                     </h:form>
                 </h:column>
 
                 <f:facet name="footer">
                     <h:button styleClass="btn" outcome="/brand/brand_create__basic.xhtml"
-                              value="Create new brand"/>
+                              value="#{msg['brand.list.createNew']}" />
                 </f:facet>
             </h:dataTable>
         </article>
