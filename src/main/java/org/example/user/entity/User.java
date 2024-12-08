@@ -21,11 +21,11 @@ import java.util.UUID;
 public class User implements Serializable {
     @Id
     private UUID id;
-    private String name;
+    private String username;
+    private String login;
     @Column(name = "age")
     private Integer age;
     private Boolean isPolish;
-    private String login;
 
     @ToString.Exclude
     private String password;

@@ -16,9 +16,9 @@ import java.util.UUID;
 @EqualsAndHashCode
 public class GetUserResponse {
     private UUID id;
-    private String name;
-    private Integer age;
+    private String username;
     private String login;
+    private Integer age;
     private Boolean isPolish;
     @Singular
     private List<Car> cars;

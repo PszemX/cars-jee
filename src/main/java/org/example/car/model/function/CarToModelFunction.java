@@ -14,7 +14,7 @@ public class CarToModelFunction implements Function<Car, CarModel>, Serializable
                 .horsePower(entity.getHorsePower())
                 .registration(entity.getRegistration())
                 .brand(entity.getBrand().getName())
-                .user(entity.getUser().getName())
+                .user(entity.getUser().getUsername())
                 .build();
     }
 }

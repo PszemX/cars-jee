@@ -44,6 +44,8 @@ public class UserRestController implements UserController {
 
     @Override
     public GetUsersResponse getUsers() {
+        System.out.println("ile");
+        System.out.println(userService.findAll().size());
         return factory.usersToResponse().apply(userService.findAll());
     }
 

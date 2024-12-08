@@ -25,8 +25,18 @@
                 <div class="row">
                     <div class="col-4 p-2">
                         <div class="form-outline">
-                            <h:outputLabel for="description" value="#{msg['brand.create.body']}:" styleClass="form-label"/>
-                            <h:inputTextarea id="description" value="#{brandCreate.brand.body}" styleClass="form-control" rows="4"/>
+                            <h:outputLabel for="manual" value="#{msg['brand.create.manual']}:" styleClass="form-label"/>
+<!--                            <h:selectBooleanCheckbox id="manual" value="#{brandCreate.brand.manual}" />-->
+                            <h:inputText id="manual" value="#{brandCreate.brand.manual}" styleClass="form-control"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4 p-2">
+                        <div class="form-outline">
+                            <h:outputLabel for="body" value="#{msg['brand.create.body']}:" styleClass="form-label"/>
+                            <h:inputText id="body" value="#{brandCreate.brand.body}" styleClass="form-control" rows="4"/>
                         </div>
                     </div>
                 </div>

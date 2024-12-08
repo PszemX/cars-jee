@@ -35,6 +35,7 @@ public class BrandCreate implements Serializable {
     }
 
     public void init() {
+        System.out.println("initek");
         brand = BrandCreateModel.builder()
                 .id(UUID.randomUUID())
                 .build();
@@ -42,6 +43,8 @@ public class BrandCreate implements Serializable {
 
 
     public String saveAction() {
+        System.out.println("dupa dupaśna");
+        System.out.println(brand);
         brandService.createBrand(factory.modelToBrand().apply(brand));
         return "/brand/brand_list.xhtml?faces-redirect=true";
     }

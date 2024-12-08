@@ -10,10 +10,10 @@ public class UserToResponseFunction implements Function<User, GetUserResponse> {
     public GetUserResponse apply(User user) {
         return GetUserResponse.builder()
                 .id(user.getId())
-                .name(user.getName())
                 .age(user.getAge())
-                .isPolish(user.getIsPolish())
+                .username(user.getUsername())
                 .login(user.getLogin())
+                .isPolish(user.getIsPolish())
                 .cars(user.getCars().stream()
                         .map(car -> GetUserResponse.Car.builder()
                                 .horsePower(car.getHorsePower())

@@ -14,6 +14,7 @@ public class ModelToBrandFunction implements Function<BrandCreateModel, Brand>, 
                 .name(entity.getName())
                 .manual(entity.getManual())
                 .body(entity.getBody())
+
                 .build();
     }
 }

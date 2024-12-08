@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @ToString
 @EqualsAndHashCode
 public class PatchCarRequest {
+    private String title;
     private Integer horsePower;
     private LocalDate registration;
 }

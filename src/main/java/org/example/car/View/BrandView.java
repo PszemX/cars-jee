@@ -64,7 +64,11 @@ public class BrandView implements Serializable {
         if (cars == null) {
             Optional<Brand> brand = service.findBrandById(id);
             if (brand.isPresent()) {
-                cars = factory.carsToModel().apply(carService.findAllByBrand(brand.get()));
+                System.out.println("brand present");
+                System.out.println(brand);
+                cars = factory.carsToModel().apply(carService.findAllCarsByBrand(brand.get()));
+                System.out.println("cars");
+                System.out.println(cars);
             } else {
                 FacesContext.getCurrentInstance().getExternalContext().responseSendError(HttpServletResponse.SC_NOT_FOUND, "Brand not found");
             }

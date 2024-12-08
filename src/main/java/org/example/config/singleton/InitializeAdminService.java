@@ -40,12 +40,13 @@ public class InitializeAdminService {
     @SneakyThrows
     private void init() {
         if (userRepository.findByLogin("admin-service").isEmpty()) {
+            System.out.println("ehhhhh");
             User admin = User.builder()
                     .id(UUID.fromString("14d59f3a-057c-44d5-825a-19295a6600a8"))
                     .login("admin-service")
-                    .name("Admin")
-                    .isPolish(true)
-                    .age(13)
+                    .username("Admin")
+                    .age(999)
+                    .isPolish(false)
                     .password(passwordHash.generate("adminadmin".toCharArray()))
                     .roles(List.of(UserRoles.ADMIN, UserRoles.USER))
                     .build();

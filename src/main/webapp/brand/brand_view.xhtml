@@ -18,6 +18,15 @@
                     <div class="col-4">
                         <div class="row mb-2">
                             <div class="col-6">
+                                <h:outputText value="#{msg['brand.view.manual']}" />
+                            </div>
+                            <div class="col-6">
+                                <h:outputText value="#{brandView.brand.manual}"/>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-6">
                                 <h:outputText value="#{msg['brand.view.body']}" />
                             </div>
                             <div class="col-6">
@@ -29,7 +38,7 @@
                                      styleClass="table align-middle mb-0 bg-white" headerClass="bg-light">
                             <h:column>
                                 <f:facet name="header"><h:outputText value="#{msg['brand.view.title']}" /></f:facet>
-                                <h:outputText value="#{car.registration}"/>
+                                <h:outputText value="#{car.id}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header"><h:outputText value="#{msg['brand.view.view']}" /></f:facet>

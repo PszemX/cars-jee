@@ -1,5 +1,4 @@
 package org.example.user.view;
-
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;

@@ -13,6 +13,7 @@ import lombok.SneakyThrows;
 import lombok.extern.java.Log;
 import org.example.factories.DtoFunctionFactory;
 import org.example.car.controller.api.BrandController;
+import org.example.car.entity.Brand;
 import org.example.car.model.dto.GetBrandResponse;
 import org.example.car.model.dto.GetBrandsResponse;
 import org.example.car.model.dto.PatchBrandRequest;
@@ -21,6 +22,7 @@ import org.example.car.service.BrandService;
 import org.example.user.entity.UserRoles;
 
 import java.util.UUID;
+import java.util.logging.Level;
 
 @Path("")
 @Log

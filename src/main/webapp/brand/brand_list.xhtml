@@ -26,7 +26,7 @@
                     </h:link>
                 </h:column>
 
-                <h:column>
+                <h:column rendered="#{facesContext.externalContext.isUserInRole('admin')}">
                     <f:facet name="header"><h:outputText value="#{msg['brand.list.edit']}" /></f:facet>
                     <h:link outcome="/brand/brand_edit.xhtml" value="#{msg['brand.list.edit']}">
                         <f:param name="id" value="#{brand.id}"/>
@@ -41,7 +41,7 @@
                     </h:form>
                 </h:column>
 
-                <f:facet name="footer">
+                <f:facet name="footer" rendered="#{facesContext.externalContext.isUserInRole('admin')}">
                     <h:button styleClass="btn" outcome="/brand/brand_create__basic.xhtml"
                               value="#{msg['brand.list.createNew']}" />
                 </f:facet>

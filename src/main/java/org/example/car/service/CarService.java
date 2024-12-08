@@ -4,6 +4,7 @@ import jakarta.annotation.security.RolesAllowed;
 import jakarta.ejb.EJBAccessException;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.security.enterprise.SecurityContext;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ import org.example.user.entity.User;
 import org.example.user.entity.UserRoles;
 import org.example.user.repository.api.UserRepository;
 
-import java.time.LocalDate;
+import java.nio.file.AccessDeniedException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -46,7 +47,6 @@ public class CarService {
     public List<Car> findAllCars() {
         return findAllForCallerPrincipal();
     }
-
     @RolesAllowed(UserRoles.USER)
     public List<Car> findAllCarsByBrand(Brand brand) {
         return findAllByBrandForCallerPrincipal(brand);
@@ -60,7 +60,6 @@ public class CarService {
         if (brandRepository.find(car.getBrand().getId()).isEmpty()) {
             throw new IllegalArgumentException("Brand does not exists.");
         }
-        car.setRegistration(LocalDate.now());
         carRepository.create(car);
     }
 
@@ -94,12 +93,23 @@ public class CarService {
     @RolesAllowed(UserRoles.USER)
     public Optional<Car> findForCallerPrincipal(UUID id) {
         if (securityContext.isCallerInRole(UserRoles.ADMIN)) {
-            return findCarById(id);
+            return carRepository.find(id);
         }
+
         User user = userRepository.findByLogin(securityContext.getCallerPrincipal().getName())
                 .orElseThrow(IllegalStateException::new);
 
         return find(user, id);
+    }
+
+    @RolesAllowed(UserRoles.USER)
+    public List<Car> findAllForCallerPrincipal() {
+        if (securityContext.isCallerInRole(UserRoles.ADMIN)) {
+            return carRepository.findAll();
+        }
+        User user = userRepository.findByLogin(securityContext.getCallerPrincipal().getName())
+                .orElseThrow(IllegalStateException::new);
+        return findAll(user);
     }
 
     @RolesAllowed(UserRoles.USER)
@@ -113,18 +123,8 @@ public class CarService {
                 .orElseThrow(() -> new IllegalStateException("Nie znaleziono zalogowanego użytkownika"));
 
         return carsByBrand.stream()
-                .filter(car -> car.getUser().getName().equals(user.getName()))
+                .filter(car -> car.getUser().getUsername().equals(user.getUsername()))
                 .toList();
-    }
-
-    @RolesAllowed(UserRoles.USER)
-    public List<Car> findAllForCallerPrincipal() {
-        if (securityContext.isCallerInRole(UserRoles.ADMIN)) {
-            return carRepository.findAll();
-        }
-        User user = userRepository.findByLogin(securityContext.getCallerPrincipal().getName())
-                .orElseThrow(IllegalStateException::new);
-        return findAll(user);
     }
 
     @RolesAllowed(UserRoles.USER)

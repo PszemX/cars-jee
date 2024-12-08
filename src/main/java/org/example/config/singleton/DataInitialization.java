@@ -60,7 +60,7 @@ public class DataInitialization {
         User admin = User.builder()
                 .id(UUID.randomUUID())
                 .login("admin")
-                .name("admin")
+                .username("admin")
                 .password("adminadmin")
                 .age(999)
                 .isPolish(true)
@@ -69,7 +69,7 @@ public class DataInitialization {
 
         User user1 = User.builder()
                 .id(UUID.fromString("665e4aba-0640-49c2-b71f-4ddf1f9674ba"))
-                .name("krzysztof")
+                .username("krzysztof")
                 .age(30)
                 .isPolish(true)
                 .login("krzysztof123")
@@ -79,7 +79,7 @@ public class DataInitialization {
 
         User user2 = User.builder()
                 .id(UUID.randomUUID())
-                .name("elon")
+                .username("elon")
                 .age(25)
                 .isPolish(false)
                 .login("elon123")
@@ -89,7 +89,7 @@ public class DataInitialization {
 
         User user3 = User.builder()
                 .id(UUID.randomUUID())
-                .name("steve")
+                .username("steve")
                 .age(40)
                 .isPolish(true)
                 .login("steve123")
@@ -99,7 +99,7 @@ public class DataInitialization {
 
         User user4 = User.builder()
                 .id(UUID.randomUUID())
-                .name("jimmy")
+                .username("jimmy")
                 .age(35)
                 .isPolish(true)
                 .login("jimmy123")

@@ -19,7 +19,6 @@ public class UserList {
     private final UserService service;
     private UsersModel users;
 
-
     @Inject
     public UserList(ModelFunctionFactory factory, UserService service) {
         this.factory = factory;
@@ -37,4 +36,5 @@ public class UserList {
         service.deleteUser(User.builder().id(user.getId()).build());
         return "user_list?faces-redirect=true";
     }
+
 }

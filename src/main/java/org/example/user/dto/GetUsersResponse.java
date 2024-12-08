@@ -26,9 +26,9 @@ public class GetUsersResponse {
     @EqualsAndHashCode
     public static class User {
         private UUID id;
-        private String name;
-        private Integer age;
+        private String username;
         private String login;
+        private Integer age;
         private Boolean isPolish;
     }
 }

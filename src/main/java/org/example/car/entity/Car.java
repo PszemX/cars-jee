@@ -28,4 +28,6 @@ public class Car implements Serializable {
     @ManyToOne
     @JoinColumn(name = "user_username")
     private User user;
+
+
 }
