@@ -7,7 +7,7 @@ import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
-import org.example.car.entity.Brand;
+import org.example.brand.entity.Brand;
 import org.example.car.repository.api.BrandRepository;
 import org.example.user.entity.UserRoles;
 

@@ -12,7 +12,7 @@ import jakarta.ws.rs.Path;
 import lombok.extern.java.Log;
 import org.example.factories.DtoFunctionFactory;
 import org.example.car.controller.api.CarController;
-import org.example.car.entity.Brand;
+import org.example.brand.entity.Brand;
 import org.example.car.entity.Car;
 import org.example.car.model.dto.GetCarResponse;
 import org.example.car.model.dto.GetCarsResponse;

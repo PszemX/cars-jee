@@ -4,8 +4,12 @@ import jakarta.enterprise.context.Dependent;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
-import org.example.car.entity.Brand;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import org.example.brand.entity.Brand;
 import org.example.car.entity.Car;
+//import org.example.car.entity.Car_;
+import org.example.car.entity.Car_;
 import org.example.car.repository.api.CarRepository;
 import org.example.user.entity.User;
 
@@ -13,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import jakarta.persistence.criteria.Root;
 @Dependent
 public class CarPersistenceRepository implements CarRepository {
     private EntityManager em;
@@ -29,7 +34,13 @@ public class CarPersistenceRepository implements CarRepository {
 
     @Override
     public List<Car> findAll() {
-        return em.createQuery("select c from Car c", Car.class).getResultList();
+        //return em.createQuery("select c from Car c", Car.class).getResultList();
+
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Car> query = cb.createQuery(Car.class);
+        Root<Car> root = query.from(Car.class);
+        query.select(root);
+        return em.createQuery(query).getResultList();
     }
 
     @Override
@@ -52,10 +63,20 @@ public class CarPersistenceRepository implements CarRepository {
     @Override
     public Optional<Car> findByIdAndUser(UUID id, User user) {
         try {
-            return Optional.of(em.createQuery("select c from Car c where c.id = :id and c.user = :user", Car.class)
-                    .setParameter("user", user)
-                    .setParameter("id", id)
-                    .getSingleResult());
+//            return Optional.of(em.createQuery("select c from Car c where c.id = :id and c.user = :user", Car.class)
+//                    .setParameter("user", user)
+//                    .setParameter("id", id)
+//                    .getSingleResult());
+
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<Car> query = cb.createQuery(Car.class);
+            Root<Car> root = query.from(Car.class);
+            query.select(root)
+                    .where(cb.and(
+                            cb.equal(root.get(Car_.user), user),
+                            cb.equal(root.get(Car_.id), id)
+                    ));
+            return Optional.of(em.createQuery(query).getSingleResult());
         } catch (NoResultException ex) {
             return Optional.empty();
         }
@@ -63,16 +84,29 @@ public class CarPersistenceRepository implements CarRepository {
 
     @Override
     public List<Car> findAllByUser(User user) {
-        return em.createQuery("select c from Car c where c.user = :user", Car.class)
-                .setParameter("user", user)
-                .getResultList();
+//        return em.createQuery("select c from Car c where c.user = :user", Car.class)
+//                .setParameter("user", user)
+//                .getResultList();
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Car> query = cb.createQuery(Car.class);
+        Root<Car> root = query.from(Car.class);
+        query.select(root)
+                .where(cb.equal(root.get(Car_.user), user));
+        return em.createQuery(query).getResultList();
     }
 
     @Override
     public List<Car> findAllByBrand(Brand brand) {
-        return em.createQuery("select c from Car c where c.brand = :brand", Car.class)
-                .setParameter("brand", brand)
-                .getResultList();
+//        return em.createQuery("select c from Car c where c.brand = :brand", Car.class)
+//                .setParameter("brand", brand)
+//                .getResultList();
+
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Car> query = cb.createQuery(Car.class);
+        Root<Car> root = query.from(Car.class);
+        query.select(root)
+                .where(cb.equal(root.get(Car_.brand), brand));
+        return em.createQuery(query).getResultList();
     }
 
 

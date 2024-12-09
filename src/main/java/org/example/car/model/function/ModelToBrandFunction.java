@@ -1,6 +1,6 @@
 package org.example.car.model.function;
 
-import org.example.car.entity.Brand;
+import org.example.brand.entity.Brand;
 import org.example.car.model.BrandCreateModel;
 
 import java.io.Serializable;
@@ -14,7 +14,6 @@ public class ModelToBrandFunction implements Function<BrandCreateModel, Brand>, 
                 .name(entity.getName())
                 .manual(entity.getManual())
                 .body(entity.getBody())
-
                 .build();
     }
 }

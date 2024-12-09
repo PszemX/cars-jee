@@ -1,12 +1,10 @@
 package org.example.car.View;
 
 import jakarta.ejb.EJB;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.example.factories.ModelFunctionFactory;
-import org.example.car.entity.Brand;
 import org.example.car.model.BrandsModel;
 import org.example.car.service.BrandService;
 

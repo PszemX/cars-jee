@@ -2,6 +2,9 @@ package org.example.car.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
+import org.example.brand.entity.Brand;
+import org.example.entity.VersionAndCreationDateAuditable;
 import org.example.user.entity.User;
 
 import java.io.Serializable;
@@ -10,14 +13,14 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-@EqualsAndHashCode
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "cars")
-@ToString
-public class Car implements Serializable {
+public class Car extends VersionAndCreationDateAuditable implements Serializable {
     @Id
     private UUID id;
     private Integer horsePower;

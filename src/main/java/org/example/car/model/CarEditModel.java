@@ -1,9 +1,9 @@
-package org.example.car.model.dto;
+package org.example.car.model;
 
 import lombok.*;
+import org.example.user.model.UserModel;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -12,11 +12,9 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 @EqualsAndHashCode
-public class GetCarResponse {
-    private UUID id;
+public class CarEditModel {
     private Integer horsePower;
     private LocalDate registration;
-    private String brand;
-    private String user;
+    private UserModel user;
     private Long version;
 }

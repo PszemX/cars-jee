@@ -1,6 +1,6 @@
 package org.example.car.model.function;
 
-import org.example.car.entity.Brand;
+import org.example.brand.entity.Brand;
 import org.example.car.model.BrandEditModel;
 
 import java.io.Serializable;

@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.Getter;
 import lombok.Setter;
 import org.example.factories.ModelFunctionFactory;
-import org.example.car.entity.Brand;
+import org.example.brand.entity.Brand;
 import org.example.car.model.BrandEditModel;
 import org.example.car.service.BrandService;
 

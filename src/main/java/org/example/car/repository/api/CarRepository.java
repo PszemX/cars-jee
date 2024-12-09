@@ -1,6 +1,6 @@
 package org.example.car.repository.api;
 
-import org.example.car.entity.Brand;
+import org.example.brand.entity.Brand;
 import org.example.car.entity.Car;
 import org.example.repository.api.Repository;
 import org.example.user.entity.User;

@@ -9,7 +9,7 @@ import jakarta.security.enterprise.SecurityContext;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.java.Log;
-import org.example.car.entity.Brand;
+import org.example.brand.entity.Brand;
 import org.example.car.entity.Car;
 import org.example.car.entity.CarFormat;
 import org.example.car.service.BrandService;
@@ -61,6 +61,16 @@ public class DataInitialization {
                 .id(UUID.randomUUID())
                 .login("admin")
                 .username("admin")
+                .password("adminadmin")
+                .age(999)
+                .isPolish(true)
+                .roles(List.of(UserRoles.ADMIN, UserRoles.USER))
+                .build();
+
+        User admin2 = User.builder()
+                .id(UUID.randomUUID())
+                .login("admin2")
+                .username("admin2")
                 .password("adminadmin")
                 .age(999)
                 .isPolish(true)
@@ -167,6 +177,7 @@ public class DataInitialization {
 
         if(userService.find("krzysztof123").isEmpty()){
             userService.createUser(admin);
+            userService.createUser(admin2);
             userService.createUser(user1);
             userService.createUser(user2);
             userService.createUser(user3);

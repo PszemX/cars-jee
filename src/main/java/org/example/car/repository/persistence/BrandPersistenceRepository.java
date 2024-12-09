@@ -3,7 +3,10 @@ package org.example.car.repository.persistence;
 import jakarta.enterprise.context.Dependent;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.example.car.entity.Brand;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+import org.example.brand.entity.Brand;
 import org.example.car.repository.api.BrandRepository;
 
 import java.util.List;
@@ -26,7 +29,12 @@ public class BrandPersistenceRepository implements BrandRepository {
 
     @Override
     public List<Brand> findAll() {
-        return em.createQuery("select p from Brand p", Brand.class).getResultList();
+//        return em.createQuery("select p from Brand p", Brand.class).getResultList();
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Brand> query = cb.createQuery(Brand.class);
+        Root<Brand> root = query.from(Brand.class);
+        query.select(root);
+        return em.createQuery(query).getResultList();
     }
 
     @Override

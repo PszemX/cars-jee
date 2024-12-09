@@ -1,7 +1,9 @@
-package org.example.car.entity;
+package org.example.brand.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.car.entity.Car;
+import org.example.car.entity.CarFormat;
 
 import java.io.Serializable;
 import java.util.List;

@@ -1,7 +1,6 @@
 package org.example.car.model.dto;
 
 import lombok.*;
-import org.example.car.entity.CarFormat;
 
 import java.time.LocalDate;
 
@@ -16,4 +15,5 @@ public class PatchCarRequest {
     private String title;
     private Integer horsePower;
     private LocalDate registration;
+    private Long version;
 }

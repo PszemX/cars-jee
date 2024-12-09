@@ -14,6 +14,9 @@ public class UpdateCarWithRequestFunction implements BiFunction<Car, PatchCarReq
                 .registration(patchCarRequest.getRegistration())
                 .user(car.getUser())
                 .brand(car.getBrand())
+                .version(patchCarRequest.getVersion())
+                .creationDateTime(car.getCreationDateTime())
+                .updateDateTime(car.getUpdateDateTime())
                 .build();
     }
 }

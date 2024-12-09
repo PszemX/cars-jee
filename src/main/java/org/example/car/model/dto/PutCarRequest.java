@@ -1,7 +1,6 @@
 package org.example.car.model.dto;
 
 import lombok.*;
-import org.example.car.entity.CarFormat;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -19,4 +18,5 @@ public class PutCarRequest {
     private LocalDate registration;
     private UUID brand;
     private UUID user;
+    private Long version;
 }

@@ -14,6 +14,7 @@ public class CarToResponseFunction implements Function<Car, GetCarResponse> {
                 .registration(entity.getRegistration())
                 .user(entity.getUser().toString())
                 .brand(entity.getBrand().toString())
+                .version(entity.getVersion())
                 .build();
     }
 }

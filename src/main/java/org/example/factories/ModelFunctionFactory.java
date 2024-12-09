@@ -42,4 +42,10 @@ public class ModelFunctionFactory {
     public CarsToModelFunction carsToModel() {
         return new CarsToModelFunction();
     }
+    public CarToEditModelFunction carToEditModel() {
+        return new CarToEditModelFunction(userToModel());
+    }
+    public UpdateCarWithModelFunction updateCar(){
+        return new UpdateCarWithModelFunction();
+    }
 }

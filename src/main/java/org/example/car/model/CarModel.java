@@ -1,7 +1,6 @@
 package org.example.car.model;
 
 import lombok.*;
-import org.example.car.entity.CarFormat;
 
 import java.time.LocalDate;
 import java.util.UUID;

@@ -1,6 +1,6 @@
 package org.example.car.model.dto.function;
 
-import org.example.car.entity.Brand;
+import org.example.brand.entity.Brand;
 import org.example.car.entity.Car;
 import org.example.car.model.dto.PutCarRequest;
 import org.example.user.entity.User;
